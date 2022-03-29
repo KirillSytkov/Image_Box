@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="sliderAttention" id="DAc-7M-sO1" customClass="sliderAttention" customModule="ImageGallery" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g0e-hf-BcB" userLabel="attentionView">
+                    <rect key="frame" x="50" y="323" width="314" height="250"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Раздел слайдер" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="BDV-xL-2rb">
+                            <rect key="frame" x="30" y="60" width="254" height="30"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавьте фотографии в основной альбом чтобы просматривать их в этом разделе" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="47v-LY-un4">
+                            <rect key="frame" x="30" y="110" width="254" height="95.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellowAlert" translatesAutoresizingMaskIntoConstraints="NO" id="5Ib-dU-eR5">
+                            <rect key="frame" x="117" y="-40" width="80" height="80"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="6J2-HY-1YO"/>
+                                <constraint firstAttribute="width" secondItem="5Ib-dU-eR5" secondAttribute="height" multiplier="1:1" id="P0b-XN-8Rk"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="47v-LY-un4" firstAttribute="top" secondItem="BDV-xL-2rb" secondAttribute="bottom" constant="20" id="DJH-sp-M91"/>
+                        <constraint firstAttribute="trailing" secondItem="BDV-xL-2rb" secondAttribute="trailing" constant="30" id="IRx-xK-r6h"/>
+                        <constraint firstItem="BDV-xL-2rb" firstAttribute="leading" secondItem="g0e-hf-BcB" secondAttribute="leading" constant="30" id="M9r-AP-MLg"/>
+                        <constraint firstItem="47v-LY-un4" firstAttribute="leading" secondItem="g0e-hf-BcB" secondAttribute="leading" constant="30" id="VwV-K1-SBk"/>
+                        <constraint firstAttribute="height" constant="250" id="aRH-1X-Wz7"/>
+                        <constraint firstItem="47v-LY-un4" firstAttribute="centerX" secondItem="g0e-hf-BcB" secondAttribute="centerX" id="fIT-GA-NBy"/>
+                        <constraint firstItem="5Ib-dU-eR5" firstAttribute="centerX" secondItem="g0e-hf-BcB" secondAttribute="centerX" id="hhW-RV-BHE"/>
+                        <constraint firstAttribute="trailing" secondItem="47v-LY-un4" secondAttribute="trailing" constant="30" id="neU-yj-7gz"/>
+                        <constraint firstItem="BDV-xL-2rb" firstAttribute="centerX" secondItem="g0e-hf-BcB" secondAttribute="centerX" id="vvm-SN-4SU"/>
+                        <constraint firstItem="BDV-xL-2rb" firstAttribute="top" secondItem="5Ib-dU-eR5" secondAttribute="bottom" constant="20" id="wKi-nY-WsZ"/>
+                        <constraint firstItem="5Ib-dU-eR5" firstAttribute="top" secondItem="g0e-hf-BcB" secondAttribute="top" constant="-40" id="wWX-KP-d41"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="QOc-Hw-Lcu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="QOc-Hw-Lcu" firstAttribute="trailing" secondItem="g0e-hf-BcB" secondAttribute="trailing" constant="50" id="9tx-1i-9jO"/>
+                <constraint firstItem="g0e-hf-BcB" firstAttribute="leading" secondItem="QOc-Hw-Lcu" secondAttribute="leading" constant="50" id="d7B-Ok-Bp2"/>
+                <constraint firstItem="g0e-hf-BcB" firstAttribute="centerY" secondItem="DAc-7M-sO1" secondAttribute="centerY" id="lS5-wb-lz8"/>
+            </constraints>
+            <connections>
+                <outlet property="attentionView" destination="g0e-hf-BcB" id="k3B-wt-ga8"/>
+            </connections>
+            <point key="canvasLocation" x="900.00000000000011" y="157.36607142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="yellowAlert" width="5951" height="5321"/>
+    </resources>
+</document>
