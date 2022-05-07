@@ -14,23 +14,22 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var imageViewCenterScreen: UIView!
     
     //MARK: - vars/lets
+    var galleryModel = GalleryModel()
     var infoFavoritesAlert = infoFavorites.instanceFromNib()
-    var imageObjectArray: [imageObject] = []
     let itemsPerRow:CGFloat = 4
     let sectionsInserts = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     
     //MARK: - lyfecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reloadCollectionImage()
-        reloadImageViewCenter()
+        galleryModel.reloadCollectionImage(with: collectionView)
+        galleryModel.reloadImageViewCenter(centerView: imageViewCenterScreen)
         mainSettings()
         navBarInfoButtonAdd()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        imageObjectArray.removeAll()
-        
+        galleryModel.imageFavorites.removeAll()
     }
     
     //MARK: - IBActions
@@ -62,38 +61,18 @@ class FavoritesViewController: UIViewController {
             
         }
     }
-    
-    private func reloadCollectionImage() {
-        let imageObjects = UserDefaults.standard.value([imageObject].self, forKey: keys.images) ?? []
-        
-        for imageObject in imageObjects {
-            if imageObject.favorite {
-                self.imageObjectArray.append(imageObject)
-            }
-        }
-        
-        self.collectionView.reloadData()
-    }
-    
-    private func reloadImageViewCenter() {
-        if !self.imageObjectArray.isEmpty {
-            self.imageViewCenterScreen.isHidden = true
-        } else {
-            self.imageViewCenterScreen.isHidden = false
-        }
-    }
 }
 
 //MARK: - Extensions
 extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.imageObjectArray.count
+        return self.galleryModel.imageFavorites.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.configure(with: imageObjectArray[indexPath.item])
+        cell.configure(with: galleryModel.imageFavorites[indexPath.item])
         
         return cell
     }
@@ -110,9 +89,9 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let controller = self.tabBarController?.viewControllers?[2] as? UINavigationController,
               let sliderViewController = controller.topViewController as? SliderViewController else { return }
-        sliderViewController.imageObjectArray = self.imageObjectArray
+        sliderViewController.imageObjectArray = self.galleryModel.imageFavorites
         sliderViewController.imageIndex = indexPath.item
-        
+
         self.tabBarController?.selectedIndex = 2
     }
     

@@ -33,6 +33,7 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
         formater.dateFormat = "d MMMM yyyy"
         return  formater.string(from: date)
     }
+    
     func minutesDateSelect(_ sender: imageObject) -> String {
         let date = sender.date
         let formater = DateFormatter()

@@ -18,12 +18,13 @@ class AlbumViewController: UIViewController{
     @IBOutlet weak var imageViewCenterScreen: UIView!
 
     //MARK: - vars/lets
+    var galleryModel = GalleryModel()
+    
     let deleteScreen = deleteAttention.instanceFromNib()
     let firstAttentionView = FirstAttention.instanceFromNib()
     var plusButtonActive = false
     var firstTime = UserDefaults.standard.value(Bool.self, forKey: keys.firstEnter)
-    var imageObjectArray: [imageObject] = []
-    let itemsPerRow:CGFloat = 4
+    let itemsPerRow: CGFloat = 4
     let sectionsInserts = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     
     
@@ -35,8 +36,8 @@ class AlbumViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reloadCollectionImage()
-        reloadInfoViewCenter()
+        galleryModel.reloadCollectionImage(with: self.collectionView)
+        galleryModel.reloadImageViewCenter(centerView: imageViewCenterScreen)
         mainSettings()
         navigationBarButtonsAdd()
         loginFirstTime()
@@ -71,7 +72,7 @@ class AlbumViewController: UIViewController{
     }
     
     @IBAction func importPhotoButtonPressed(_ sender: UIButton) {
-        loadImagePicker()
+        galleryModel.loadImagePicker(view: self)
         rotatePlusButton()
     }
     
@@ -80,7 +81,7 @@ class AlbumViewController: UIViewController{
     }
     
     @IBAction func trashButtonPressed() {
-        if !self.imageObjectArray.isEmpty{
+        if !self.galleryModel.imageObjectArray.isEmpty{
             self.view.addSubview(deleteScreen)
             UIView.animate(withDuration: 0.5) {
                 self.deleteScreen.blur.alpha = 1
@@ -142,50 +143,20 @@ class AlbumViewController: UIViewController{
             self.firstAttentionView.attentionView.alpha = 1
         }
     }
-    
-    private func reloadCollectionImage() {
-        self.imageObjectArray = UserDefaults.standard.value([imageObject].self, forKey: keys.images) ?? []
-        self.collectionView.reloadData()
-        
-    }
-    
-    private func reloadInfoViewCenter() {
-        if !self.imageObjectArray.isEmpty {
-            self.imageViewCenterScreen.isHidden = true
-        } else {
-            self.imageViewCenterScreen.isHidden = false
-        }
-    }
-    
-    private func loadImagePicker () {
-        let imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = true
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.modalPresentationStyle = .fullScreen
-        self.present(imagePicker, animated: true, completion: nil)
-    }
-    
+
 }
 
 //MARK: - Extensions
 extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.imageObjectArray.count + 1
+        return self.galleryModel.imageObjectArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell() }
         
-        if indexPath.item == 0 {
-            cell.imageViewCell.image = UIImage(systemName: "plus")
-            cell.imageViewCell.tintColor = Settings.shared.textColor
-        }
-        
-        if indexPath.item > 0 {
-            cell.configure(with: imageObjectArray[indexPath.item - 1])
-        }
+            cell.configure(with: self.galleryModel.imageObjectArray[indexPath.item])
         
         return cell
     }
@@ -204,16 +175,9 @@ extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSou
         guard let controller = self.tabBarController?.viewControllers?[2] as? UINavigationController,
               let sliderViewController = controller.topViewController as? SliderViewController else { return }
         
-        if indexPath.item == 0 {
-            loadImagePicker()
-        } else {
-            if indexPath.item == 1 {
-                sliderViewController.imageIndex = 0
-            } else {
-                sliderViewController.imageIndex = indexPath.item - 1
-            }
+            sliderViewController.imageIndex = indexPath.item
+            
             self.tabBarController?.selectedIndex = 2
-        }
         
     }
     
