@@ -15,6 +15,7 @@ class ImageZoomView: UIScrollView, UIScrollViewDelegate {
             self.imageView.image = image
         }
     }
+    
     private var imageView: UIImageView!
     private var gestureRecognizer: UITapGestureRecognizer!
     
@@ -45,7 +46,7 @@ class ImageZoomView: UIScrollView, UIScrollViewDelegate {
         gestureRecognizer.numberOfTapsRequired = 2
         addGestureRecognizer(gestureRecognizer)
     }
-
+    
     // Handles a double tap by either resetting the zoom or zooming to where was tapped
     @IBAction func handleDoubleTap() {
         if zoomScale == 1 {
@@ -54,7 +55,7 @@ class ImageZoomView: UIScrollView, UIScrollViewDelegate {
             setZoomScale(1, animated: true)
         }
     }
-
+    
     // Calculates the zoom rectangle for the scale
     func zoomRectForScale(_ scale: CGFloat, center: CGPoint) -> CGRect {
         var zoomRect = CGRect.zero

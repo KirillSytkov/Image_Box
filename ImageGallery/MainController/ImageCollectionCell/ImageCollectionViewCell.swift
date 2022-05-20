@@ -11,11 +11,10 @@ class ImageCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageViewCell: UIImageView!
     
-    func configure(with image: imageObject) {
+    func configure(image: String) {
         self.layer.cornerRadius = 5
         self.clipsToBounds = true
-        self.imageViewCell.image = Manager.shared.loadImage(fileName: image.name)
+        self.imageViewCell.image = ImageManager.shared.loadImage(fileName: image)
     }
     
-
 }

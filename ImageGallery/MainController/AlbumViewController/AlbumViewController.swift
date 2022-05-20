@@ -81,7 +81,7 @@ class AlbumViewController: UIViewController{
     }
     
     @IBAction func trashButtonPressed() {
-        if !self.galleryModel.imageObjectArray.isEmpty{
+        if !self.galleryModel.imagesCollection.isEmpty{
             self.view.addSubview(deleteScreen)
             UIView.animate(withDuration: 0.5) {
                 self.deleteScreen.blur.alpha = 1
@@ -150,13 +150,13 @@ class AlbumViewController: UIViewController{
 extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.galleryModel.imageObjectArray.count
+        return self.galleryModel.imagesCollection.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell() }
         
-            cell.configure(with: self.galleryModel.imageObjectArray[indexPath.item])
+//            cell.configure()
         
         return cell
     }

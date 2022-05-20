@@ -64,7 +64,7 @@ class SliderViewController: UIViewController {
     @IBAction func doubleTapDetected(_ recognizer: UITapGestureRecognizer) {
         if !imageObjectArray.isEmpty {
             self.view.addSubview(self.fullScreen)
-            self.fullScreen.imageZoom.image = Manager.shared.loadImage(fileName: imageObjectArray[imageIndex].name)
+            self.fullScreen.imageZoom.image = ImageManager.shared.loadImage(fileName: imageObjectArray[imageIndex].name)
             UIView.animate(withDuration: 0.5) {
                 self.fullScreen.alpha = 1
                 self.navigationController?.isNavigationBarHidden = true
@@ -88,6 +88,7 @@ class SliderViewController: UIViewController {
         }
  
     }
+    
     @IBAction func swipeRight(_ recognizer: UISwipeGestureRecognizer) {
         secondImageView.isHidden = false
         if !imageObjectArray.isEmpty{
@@ -101,6 +102,7 @@ class SliderViewController: UIViewController {
 
         }
     }
+    
     //END OF Recognizeres ----
     @IBAction func textFieldSave(_ sender: UITextField) {
         if !imageObjectArray.isEmpty{
@@ -134,18 +136,18 @@ class SliderViewController: UIViewController {
     }
     
     @IBAction func deleteOkButtonPresed(_ sender: UIButton){
-        
         if !self.imageObjectArray.isEmpty {
-            imageObjectArray.remove(at: imageIndex)
+            ImageManager.shared.deleteImage(imageArray: imageObjectArray, imageIndex: imageIndex)
+//            imageObjectArray.remove(at: imageIndex)
             if imageIndex != 0 {
                 imageIndex -= 1
             }
-            UserDefaults.standard.set(encodable: imageObjectArray, forKey: keys.images)
+//            UserDefaults.standard.set(encodable: imageObjectArray, forKey: keys.images)
             if !self.imageObjectArray.isEmpty {
                 checkLike()
                 self.textFieldImage.text = self.imageObjectArray[imageIndex].signature
-                self.secondImageView.image = Manager.shared.loadImage(fileName: imageObjectArray[imageIndex].name)
-                self.firstImageView.image = Manager.shared.loadImage(fileName: imageObjectArray[imageIndex].name)
+                self.secondImageView.image = ImageManager.shared.loadImage(fileName: imageObjectArray[imageIndex].name)
+                self.firstImageView.image = ImageManager.shared.loadImage(fileName: imageObjectArray[imageIndex].name)
                 self.navigationTitle.setTitle(mainDateSelected(imageObjectArray[imageIndex]), subtitle: minutesDateSelect(imageObjectArray[imageIndex]))
             } else {
                 self.like = false
@@ -193,8 +195,8 @@ class SliderViewController: UIViewController {
                 self.imageIndex = self.imageObjectArray.count - 1
             }
             self.textFieldImage.isHidden = false
-            self.firstImageView.image = Manager.shared.loadImage(fileName: imageObjectArray[imageIndex].name)
-            self.secondImageView.image = Manager.shared.loadImage(fileName: imageObjectArray[imageIndex].name)
+            self.firstImageView.image = ImageManager.shared.loadImage(fileName: imageObjectArray[imageIndex].name)
+            self.secondImageView.image = ImageManager.shared.loadImage(fileName: imageObjectArray[imageIndex].name)
             self.textFieldImage.text = imageObjectArray[imageIndex].signature
             self.navigationTitle.setTitle(mainDateSelected(imageObjectArray[imageIndex]), subtitle: minutesDateSelect(imageObjectArray[imageIndex]))
             checkLike()
@@ -204,6 +206,7 @@ class SliderViewController: UIViewController {
             self.view.addSubview(sliderAttentionScreen)
         }
     }
+    
     private func checkLike() {
             self.like = imageObjectArray[imageIndex].favorite
             if self.like {
@@ -225,7 +228,7 @@ class SliderViewController: UIViewController {
     private func loadLeftSwipe() {
         guard let imageView = firstImageView,
               let secondImageView = secondImageView else {return}
-        secondImageView.image = Manager.shared.loadImage(fileName: imageObjectArray[imageIndex].name)
+        secondImageView.image = ImageManager.shared.loadImage(fileName: imageObjectArray[imageIndex].name)
         UIView.animate(withDuration: 0.5) {
             imageView.frame.origin.x = self.view.frame.minX - imageView.frame.width * 2
         } completion: { _ in
@@ -235,10 +238,11 @@ class SliderViewController: UIViewController {
         }
         updateScrollView()
     }
+    
     private func loadRightSwipe() {
         guard let imageView = firstImageView,
               let secondImageView = secondImageView else {return}
-        imageView.image = Manager.shared.loadImage(fileName: imageObjectArray[imageIndex].name)
+        imageView.image = ImageManager.shared.loadImage(fileName: imageObjectArray[imageIndex].name)
         imageView.frame.origin.x  = self.view.frame.maxX + imageView.frame.width
         UIView.animate(withDuration: 0.5) {
             imageView.frame.origin.x = 0
@@ -248,6 +252,7 @@ class SliderViewController: UIViewController {
         }
         updateScrollView()
     }
+    
 // END OF SWIPE FUNCTIONS ---------
     private func navBarInfoButtonAdd() -> UIBarButtonItem {
          self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .done, target: self, action: #selector(likeButtonPressed(_:)))

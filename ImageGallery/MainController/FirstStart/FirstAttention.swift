@@ -9,10 +9,11 @@ import UIKit
 
 class FirstAttention: UIView {
     
-//MARK: - Otlets
+    //MARK: - Otlets
     @IBOutlet weak var attentionView: UIView!
     @IBOutlet weak var attentionButton: UIButton!
     @IBOutlet weak var blurEffectView: UIVisualEffectView!
+    
     //MARK: - Actions
     @IBAction func okButtonPressed(_ sender: UIButton) {
         self.removeFromSuperview()
@@ -20,7 +21,6 @@ class FirstAttention: UIView {
     }
     
     //MARK: - flow func
-    
     func addSettings() {
         self.attentionButton.backgroundColor = Settings.shared.fourthColor
         self.attentionButton.layer.cornerRadius = 25
@@ -29,8 +29,8 @@ class FirstAttention: UIView {
         self.attentionView.alpha = 0
         self.blurEffectView.alpha = 0
     }
-        static func instanceFromNib() -> FirstAttention {
-            guard let view = UINib(nibName: "FirstAttention", bundle: nil).instantiate(withOwner: nil, options: nil).first as? FirstAttention else { return FirstAttention() }
-            return view
-        }
+    static func instanceFromNib() -> FirstAttention {
+        guard let view = UINib(nibName: "FirstAttention", bundle: nil).instantiate(withOwner: nil, options: nil).first as? FirstAttention else { return FirstAttention() }
+        return view
+    }
 }

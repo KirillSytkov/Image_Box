@@ -12,14 +12,14 @@ class EntranceViewModel {
     
     //MARK: - vars/lets
     var mainLabel = Bindable<String?>(nil)
+
+    var shakeTextField: (()->())?
+    var errorPassword: (()->())?
+    var navigate: (()->())?
     
     private var password: String?
     private let keychain = Keychain(service: "keychain.service")
     private let key = KeychainKey<String>(key: keys.password)
-    
-    var shakeTextField: (()->())?
-    var errorPassword: (()->())?
-    var navigate: (()->())?
     
     //MARK: - Actions
     func deleteButtonPressed(textField: UITextField) {

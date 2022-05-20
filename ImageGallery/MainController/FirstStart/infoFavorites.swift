@@ -8,17 +8,19 @@
 import UIKit
 
 class infoFavorites: UIView {
-//MARK: - IBotlets
     
+    //MARK: - IBotlets
     @IBOutlet weak var attentionView: UIView!
     @IBOutlet weak var attentionButton: UIButton!
     @IBOutlet weak var blurEffectView: UIVisualEffectView!
     
+    //MARK: - Actions
     @IBAction func okButtonPressed(_ sender: UIButton) {
         self.removeFromSuperview()
         self.blurEffectView.alpha = 0
     }
-//MARK: - flow func
+    
+    //MARK: - flow func
     func addSettings() {
         self.blurEffectView.alpha = 0
         self.attentionView.alpha = 1

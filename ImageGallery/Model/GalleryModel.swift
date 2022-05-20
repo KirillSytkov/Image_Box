@@ -10,29 +10,36 @@ import UIKit
 
 class GalleryModel {
     
-    var imageObjectArray: [imageObject] = UserDefaults.standard.value([imageObject].self, forKey: keys.images) ?? []
+    var imagesCollection = [imageObject]()
     var firstTime = UserDefaults.standard.value(Bool.self, forKey: keys.firstEnter)
     var imageFavorites = [imageObject]()
     
+    
     func reloadImageViewCenter( centerView: UIView ) {
-        if !imageObjectArray.isEmpty {
+        if !imagesCollection.isEmpty {
             centerView.isHidden = true
         } else {
             centerView.isHidden = false
         }
     }
     
-    func getFavorites() {
-        for image in imageObjectArray {
+    func updateImages() {
+        imagesCollection = ImageManager.shared.loadImageArray()
+        getFavorites()
+    }
+    
+    func reloadCollectionImage(with collectionView: UICollectionView) {
+//        imagesCollection = UserDefaults.standard.value([imageObject].self, forKey: keys.images) ?? []
+        updateImages()
+        collectionView.reloadData()
+    }
+    
+    private func getFavorites() {
+        for image in imagesCollection {
             if image.favorite {
                 imageFavorites.append(image)
             }
         }
-    }
-    func reloadCollectionImage(with collectionView: UICollectionView) {
-        imageObjectArray = UserDefaults.standard.value([imageObject].self, forKey: keys.images) ?? []
-        getFavorites()
-        collectionView.reloadData()
     }
     
     func loadImagePicker (view: UIViewController) {
