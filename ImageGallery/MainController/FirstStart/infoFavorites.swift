@@ -29,6 +29,7 @@ class infoFavorites: UIView {
         self.attentionView.backgroundColor = Settings.shared.secondColor
         self.attentionView.layer.cornerRadius = 15
     }
+    
     static func instanceFromNib() -> infoFavorites {
         guard let view = UINib(nibName: "infoFavorites", bundle: nil).instantiate(withOwner: nil, options: nil).first as? infoFavorites else { return infoFavorites() }
         return view

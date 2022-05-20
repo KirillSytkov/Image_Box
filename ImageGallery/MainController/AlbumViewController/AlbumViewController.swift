@@ -18,81 +18,52 @@ class AlbumViewController: UIViewController{
     @IBOutlet weak var imageViewCenterScreen: UIView!
 
     //MARK: - vars/lets
-    var galleryModel = GalleryModel()
-    
-    let deleteScreen = deleteAttention.instanceFromNib()
-    let firstAttentionView = FirstAttention.instanceFromNib()
-    var plusButtonActive = false
-    var firstTime = UserDefaults.standard.value(Bool.self, forKey: keys.firstEnter)
+    let infoAlert = FirstAttention.instanceFromNib()
     let itemsPerRow: CGFloat = 4
     let sectionsInserts = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     
+    var viewModel = AlbumViewModel()
     
     //MARK: - lyfecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        galleryModel.reloadCollectionImage(with: self.collectionView)
-        galleryModel.reloadImageViewCenter(centerView: imageViewCenterScreen)
         mainSettings()
-        navigationBarButtonsAdd()
-        loginFirstTime()
+        viewModel.loadController()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        rotatePlusButton()
+        deactivatePlusButtonRotate()
     }
+    
     //MARK: - IBActions
     @IBAction func plusButtonPressed(_ sender: UIButton) {
-        if self.plusButtonActive {
-            rotatePlusButton()
-        } else {
-            for importButton in self.importButtons {
-                UIView.animate(withDuration: 0.3) {
-                    importButton.alpha = 1
-                    self.plusButton.backgroundColor = .red
-                    self.plusButton.transform = CGAffineTransform(rotationAngle: 135 * .pi/180)
-                    self.blurView.alpha = 1
-                }
-            }
-            self.plusButtonActive = true
-        }
+        viewModel.plusButtonPressed()
+
     }
     
     @IBAction func openCameraPressed(_ sender: UIButton) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .camera
-        imagePicker.delegate = self
-        self.present(imagePicker, animated: true, completion: nil)
-        rotatePlusButton()
+        viewModel.openCamreButtonPressed(view: self)
+
     }
     
     @IBAction func importPhotoButtonPressed(_ sender: UIButton) {
-        galleryModel.loadImagePicker(view: self)
-        rotatePlusButton()
+        viewModel.importPhotoButtonPressed(view: self)
     }
     
     @IBAction func infoButtonPressed() {
-        firstAttention()
-    }
-    
-    @IBAction func trashButtonPressed() {
-        if !self.galleryModel.imagesCollection.isEmpty{
-            self.view.addSubview(deleteScreen)
-            UIView.animate(withDuration: 0.5) {
-                self.deleteScreen.blur.alpha = 1
-            }
-        }
+        viewModel.infoButtonPressed()
     }
     
     //MARK: - flow func
     private  func mainSettings() {
         self.navigationController?.navigationBar.tintColor = Settings.shared.textColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Settings.shared.textColor]
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .done, target: self, action: #selector(infoButtonPressed))
         self.view.backgroundColor = Settings.shared.mainColor
         self.plusButton.layer.cornerRadius = self.plusButton.frame.width / 2
         self.plusButton.backgroundColor = UIColor(red: 76/255, green: 87/255, blue: 180/255, alpha: 0.8)
@@ -101,24 +72,55 @@ class AlbumViewController: UIViewController{
             importButton.addButtonRadius(15)
             importButton.alpha = 0
         }
-        
         //------xib settings
-        self.firstAttentionView.addSettings()
-        self.firstAttentionView.center = self.view.center
-        self.deleteScreen.addSettings()
-        self.deleteScreen.center = self.view.center
+        self.infoAlert.addSettings()
+        self.infoAlert.center = self.view.center
         //------xib settings
     }
     
-    private func loginFirstTime() {
-        if firstTime ?? true {
-            firstAttention()
-            firstTime = false
-            UserDefaults.standard.set(encodable: firstTime, forKey: keys.firstEnter)
+    private func bind() {
+        viewModel.reloadCollectionView = {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+        
+        viewModel.hideCenterView = {
+                self.imageViewCenterScreen.isHidden = true
+        }
+        
+        viewModel.showCenterView = {
+                self.imageViewCenterScreen.isHidden = false
+        }
+        
+        viewModel.showAlert = {
+                self.view.addSubview(self.infoAlert)
+                self.animateAlert()
+        }
+        viewModel.activePlusButton = {
+            self.activePlusButtonRotate()
+        }
+        
+        viewModel.deactivatePlusButton = {
+            self.deactivatePlusButtonRotate()
+        }
+        
+        
+        
+    }
+
+    private func activePlusButtonRotate() {
+        for importButton in self.importButtons {
+            UIView.animate(withDuration: 0.3) {
+                importButton.alpha = 1
+                self.plusButton.backgroundColor = .red
+                self.plusButton.transform = CGAffineTransform(rotationAngle: 135 * .pi/180)
+                self.blurView.alpha = 1
+            }
         }
     }
     
-    private func rotatePlusButton() {
+    private func deactivatePlusButtonRotate() {
         for importButton in self.importButtons {
             UIView.animate(withDuration: 0.3) {
                 importButton.alpha = 0
@@ -127,20 +129,12 @@ class AlbumViewController: UIViewController{
                 self.blurView.alpha = 0
             }
         }
-        self.plusButtonActive = false
     }
-    
-    private func navigationBarButtonsAdd() {
-        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .done, target: self, action: #selector(infoButtonPressed))
-        ]
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .done, target: self, action: #selector(trashButtonPressed))
-    }
-    
-    private func firstAttention() {
-        self.view.addSubview(firstAttentionView)
+    private func animateAlert() {
         UIView.animate(withDuration: 0.5) {
-            self.firstAttentionView.blurEffectView.alpha = 0.8
-            self.firstAttentionView.attentionView.alpha = 1
+            self.infoAlert.blurEffectView.alpha = 0.8
+            self.infoAlert.attentionView.alpha = 1
+            
         }
     }
 
@@ -150,14 +144,13 @@ class AlbumViewController: UIViewController{
 extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.galleryModel.imagesCollection.count
+        viewModel.numberOfCells
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell() }
-        
-//            cell.configure()
-        
+        let cellViewModel = viewModel.getCellViewModel(at: indexPath)
+        cell.configure(image: cellViewModel.imageName)
         return cell
     }
     

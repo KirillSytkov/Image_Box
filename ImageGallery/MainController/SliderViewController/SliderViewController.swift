@@ -189,11 +189,13 @@ class SliderViewController: UIViewController {
     private func loadSliderView() {
         if self.imageObjectArray.isEmpty{
             self.imageObjectArray = UserDefaults.standard.value([imageObject].self, forKey: keys.images) ?? []
-        }        
+        }
+        
         if !self.imageObjectArray.isEmpty{
             if self.imageIndex == 0 {
                 self.imageIndex = self.imageObjectArray.count - 1
             }
+            
             self.textFieldImage.isHidden = false
             self.firstImageView.image = ImageManager.shared.loadImage(fileName: imageObjectArray[imageIndex].name)
             self.secondImageView.image = ImageManager.shared.loadImage(fileName: imageObjectArray[imageIndex].name)

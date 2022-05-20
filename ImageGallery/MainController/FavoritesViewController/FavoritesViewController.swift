@@ -14,8 +14,7 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var imageViewCenterScreen: UIView!
     
     //MARK: - vars/lets
-//    var galleryModel = GalleryManager()
-    var infoFavoritesAlert = infoFavorites.instanceFromNib()
+    var infoAlert = infoFavorites.instanceFromNib()
     let itemsPerRow:CGFloat = 4
     let sectionsInserts = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     
@@ -25,27 +24,20 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
-        navBarInfoButtonAdd()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        galleryModel.reloadCollectionImage(with: collectionView)
-//        galleryModel.reloadImageViewCenter(centerView: imageViewCenterScreen)
-        
         mainSettings()
-        viewModel.updateFavoritesCollection()
+        viewModel.loadController()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
-//        galleryModel.imageFavorites.removeAll()
         viewModel.clearGallery()
     }
     
     //MARK: - IBActions
     @IBAction func infoButtonPressed() {
-//        showAlert()
         viewModel.infoButtonPressed()
     }
     
@@ -54,23 +46,19 @@ class FavoritesViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = Settings.shared.textColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Settings.shared.textColor]
         self.view.backgroundColor = Settings.shared.mainColor
-        self.infoFavoritesAlert.addSettings()
-        self.infoFavoritesAlert.center = self.view.center
-        self.view.addSubview(self.infoFavoritesAlert)
-    }
-    
-    private func navBarInfoButtonAdd() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .done, target: self, action: #selector(infoButtonPressed))
+        self.infoAlert.addSettings()
+        self.infoAlert.center = self.view.center
     }
     
     private func animateAlert() {
         UIView.animate(withDuration: 0.5) {
-            self.infoFavoritesAlert.blurEffectView.alpha = 0.8
-            self.infoFavoritesAlert.attentionView.alpha = 1
+            self.infoAlert.blurEffectView.alpha = 0.8
+            self.infoAlert.attentionView.alpha = 1
             
         }
     }
-
+    
     private func bind() {
         viewModel.reloadCollectionView = {
             DispatchQueue.main.async {
@@ -78,13 +66,17 @@ class FavoritesViewController: UIViewController {
             }
         }
         
-        viewModel.hiddenError = {
-            self.infoFavoritesAlert.isHidden = true
+        viewModel.hideCenterView = {
+                self.imageViewCenterScreen.isHidden = true
+        }
+        
+        viewModel.showCenterView = {
+                self.imageViewCenterScreen.isHidden = false
         }
         
         viewModel.showAlert = {
-            self.infoFavoritesAlert.isHidden = false
-            self.animateAlert()
+                self.view.addSubview(self.infoAlert)
+                self.animateAlert()
         }
     }
     
@@ -113,12 +105,12 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         guard let controller = self.tabBarController?.viewControllers?[2] as? UINavigationController,
               let sliderViewController = controller.topViewController as? SliderViewController else { return }
         
-//        sliderViewController.imageObjectArray = self.galleryModel.imageFavorites
+        sliderViewController.imageObjectArray = viewModel.getFavoritesSlider()
         sliderViewController.imageIndex = indexPath.item
-
         self.tabBarController?.selectedIndex = 2
     }
     
