@@ -10,16 +10,16 @@ import UIKit
 
 class GalleryModel {
     
-    var imagesCollection = [imageObject]()
+    var images = [imageObject]()
     var imageFavorites = [imageObject]()
     
     func updateImages() {
-        imagesCollection = ImageManager.shared.loadImageArray()
+        images = ImageManager.shared.loadImageArray()
         getFavorites()
     }
     
     private func getFavorites() {
-        for image in imagesCollection {
+        for image in images {
             if image.favorite {
                 imageFavorites.append(image)
             }

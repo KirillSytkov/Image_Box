@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FirstAttention: UIView {
+class AlbumAlert: UIView {
     
     //MARK: - Otlets
     @IBOutlet weak var attentionView: UIView!
@@ -18,6 +18,7 @@ class FirstAttention: UIView {
     @IBAction func okButtonPressed(_ sender: UIButton) {
         self.removeFromSuperview()
         self.blurEffectView.alpha = 0
+        self.attentionView.alpha = 0
     }
     
     //MARK: - flow func
@@ -29,8 +30,9 @@ class FirstAttention: UIView {
         self.attentionView.alpha = 0
         self.blurEffectView.alpha = 0
     }
-    static func instanceFromNib() -> FirstAttention {
-        guard let view = UINib(nibName: "FirstAttention", bundle: nil).instantiate(withOwner: nil, options: nil).first as? FirstAttention else { return FirstAttention() }
+    
+    static func instanceFromNib() -> AlbumAlert {
+        guard let view = UINib(nibName: "FirstAttention", bundle: nil).instantiate(withOwner: nil, options: nil).first as? AlbumAlert else { return AlbumAlert() }
         return view
     }
 }

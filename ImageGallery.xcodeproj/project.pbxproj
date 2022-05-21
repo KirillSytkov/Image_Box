@@ -20,16 +20,15 @@
 		492FD01027B94E66007C99C8 /* UITextField+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492FD00F27B94E66007C99C8 /* UITextField+extension.swift */; };
 		49318CA527968CD9006EDECB /* ImageZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49318CA427968CD9006EDECB /* ImageZoomView.swift */; };
 		49318CA827969379006EDECB /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49318CA727969379006EDECB /* UIViewController.swift */; };
-		49318CAA2796AEF2006EDECB /* infoFavorites.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49318CA92796AEF2006EDECB /* infoFavorites.xib */; };
-		49318CAD2796AF43006EDECB /* infoFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49318CAC2796AF43006EDECB /* infoFavorites.swift */; };
+		49318CAA2796AEF2006EDECB /* InfoCustomAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49318CA92796AEF2006EDECB /* InfoCustomAlert.xib */; };
+		49318CAD2796AF43006EDECB /* InfoCustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49318CAC2796AF43006EDECB /* InfoCustomAlert.swift */; };
 		4944C252283795C500DD12F7 /* ImageCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4944C251283795C500DD12F7 /* ImageCollectionCellViewModel.swift */; };
 		4944C25428380AC100DD12F7 /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4944C25328380AC100DD12F7 /* AlbumViewModel.swift */; };
+		4944C2562838237800DD12F7 /* SliderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4944C2552838237700DD12F7 /* SliderViewModel.swift */; };
 		494DA66827B7DEF100B238BC /* UIButtons+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494DA66727B7DEF100B238BC /* UIButtons+extension.swift */; };
 		4958B9842795CABF00E53167 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958B9832795CABF00E53167 /* FavoritesViewController.swift */; };
 		4958B9862795D45A00E53167 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958B9852795D45A00E53167 /* AlbumViewController.swift */; };
 		4958B9882795D46700E53167 /* SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958B9872795D46700E53167 /* SliderViewController.swift */; };
-		4958B98A2795D54100E53167 /* FirstAttention.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4958B9892795D54100E53167 /* FirstAttention.xib */; };
-		4958B98C2795DEE900E53167 /* FirstAttention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958B98B2795DEE900E53167 /* FirstAttention.swift */; };
 		49607E55279876AB00F4F059 /* ImageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49607E54279876AB00F4F059 /* ImageObject.swift */; };
 		4972AB9A27AFF94C007AA940 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4972AB9927AFF94C007AA940 /* SettingsViewController.swift */; };
 		4972AB9C27AFFA31007AA940 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4972AB9B27AFFA31007AA940 /* SettingsTableViewCell.swift */; };
@@ -75,16 +74,15 @@
 		492FD00F27B94E66007C99C8 /* UITextField+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+extension.swift"; sourceTree = "<group>"; };
 		49318CA427968CD9006EDECB /* ImageZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageZoomView.swift; sourceTree = "<group>"; };
 		49318CA727969379006EDECB /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		49318CA92796AEF2006EDECB /* infoFavorites.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = infoFavorites.xib; sourceTree = "<group>"; };
-		49318CAC2796AF43006EDECB /* infoFavorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoFavorites.swift; sourceTree = "<group>"; };
+		49318CA92796AEF2006EDECB /* InfoCustomAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoCustomAlert.xib; sourceTree = "<group>"; };
+		49318CAC2796AF43006EDECB /* InfoCustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCustomAlert.swift; sourceTree = "<group>"; };
 		4944C251283795C500DD12F7 /* ImageCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionCellViewModel.swift; sourceTree = "<group>"; };
 		4944C25328380AC100DD12F7 /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
+		4944C2552838237700DD12F7 /* SliderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderViewModel.swift; sourceTree = "<group>"; };
 		494DA66727B7DEF100B238BC /* UIButtons+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButtons+extension.swift"; sourceTree = "<group>"; };
 		4958B9832795CABF00E53167 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		4958B9852795D45A00E53167 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		4958B9872795D46700E53167 /* SliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderViewController.swift; sourceTree = "<group>"; };
-		4958B9892795D54100E53167 /* FirstAttention.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstAttention.xib; sourceTree = "<group>"; };
-		4958B98B2795DEE900E53167 /* FirstAttention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAttention.swift; sourceTree = "<group>"; };
 		49607E54279876AB00F4F059 /* ImageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageObject.swift; sourceTree = "<group>"; };
 		4972AB9927AFF94C007AA940 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4972AB9B27AFFA31007AA940 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -180,8 +178,7 @@
 			children = (
 				491598E8279C3B57006DE247 /* deleteAttention.swift */,
 				4974DB0F279AA333004D7800 /* ImageFullScreen.swift */,
-				4958B98B2795DEE900E53167 /* FirstAttention.swift */,
-				49318CAC2796AF43006EDECB /* infoFavorites.swift */,
+				49318CAC2796AF43006EDECB /* InfoCustomAlert.swift */,
 				491F530B279CA39300405F44 /* sliderAttention.swift */,
 			);
 			name = xibClasses;
@@ -210,9 +207,8 @@
 			children = (
 				4974DB0D279AA309004D7800 /* ImageFullScreen.xib */,
 				4974DB11279B3EB6004D7800 /* deleteAttention.xib */,
-				4958B9892795D54100E53167 /* FirstAttention.xib */,
 				491F5309279CA15D00405F44 /* sliderAttention.xib */,
-				49318CA92796AEF2006EDECB /* infoFavorites.xib */,
+				49318CA92796AEF2006EDECB /* InfoCustomAlert.xib */,
 			);
 			path = xib;
 			sourceTree = "<group>";
@@ -272,6 +268,7 @@
 		4984D83B283565D8000C4D65 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4944C2552838237700DD12F7 /* SliderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -516,8 +513,7 @@
 			files = (
 				4974DB0E279AA309004D7800 /* ImageFullScreen.xib in Resources */,
 				492DC66327914A2100B41774 /* LaunchScreen.storyboard in Resources */,
-				49318CAA2796AEF2006EDECB /* infoFavorites.xib in Resources */,
-				4958B98A2795D54100E53167 /* FirstAttention.xib in Resources */,
+				49318CAA2796AEF2006EDECB /* InfoCustomAlert.xib in Resources */,
 				492DC66027914A2100B41774 /* Assets.xcassets in Resources */,
 				491F530A279CA15D00405F44 /* sliderAttention.xib in Resources */,
 				492DC65E27914A2100B41774 /* Main.storyboard in Resources */,
@@ -581,10 +577,10 @@
 				491598E9279C3B57006DE247 /* deleteAttention.swift in Sources */,
 				49F3F232279406320062CA50 /* Settings.swift in Sources */,
 				499CDD40279F304500CE34F4 /* MainTabBarViewController.swift in Sources */,
+				4944C2562838237800DD12F7 /* SliderViewModel.swift in Sources */,
 				49B6719727B80D7500B0CF36 /* ThemeViewController.swift in Sources */,
 				49F1EB4027981DC1000F76FC /* UserDefaults + Keys.swift in Sources */,
 				491F5308279C829500405F44 /* UINavigationBar+extension.swift in Sources */,
-				4958B98C2795DEE900E53167 /* FirstAttention.swift in Sources */,
 				4910036D27985C8600BB739F /* ImageManager.swift in Sources */,
 				4984D8362835653A000C4D65 /* FavoritesViewModel.swift in Sources */,
 				49B4FADB27B3D63900A82F5E /* ImageCollectionViewCell.swift in Sources */,
@@ -605,7 +601,7 @@
 				49983A162826B4A600721A84 /* FirstStartViewController.swift in Sources */,
 				4958B9842795CABF00E53167 /* FavoritesViewController.swift in Sources */,
 				49F3F236279424060062CA50 /* UserDefaults.swift in Sources */,
-				49318CAD2796AF43006EDECB /* infoFavorites.swift in Sources */,
+				49318CAD2796AF43006EDECB /* InfoCustomAlert.swift in Sources */,
 				491F530C279CA39300405F44 /* sliderAttention.swift in Sources */,
 				4944C252283795C500DD12F7 /* ImageCollectionCellViewModel.swift in Sources */,
 				4958B9862795D45A00E53167 /* AlbumViewController.swift in Sources */,

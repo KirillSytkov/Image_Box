@@ -18,7 +18,7 @@ class AlbumViewController: UIViewController{
     @IBOutlet weak var imageViewCenterScreen: UIView!
 
     //MARK: - vars/lets
-    let infoAlert = FirstAttention.instanceFromNib()
+    let infoAlert = InfoCustomAlert.instanceFromNib()
     let itemsPerRow: CGFloat = 4
     let sectionsInserts = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     
@@ -74,6 +74,9 @@ class AlbumViewController: UIViewController{
         }
         //------xib settings
         self.infoAlert.addSettings()
+        self.infoAlert.imageView.image = UIImage(named: "firstAttention")
+        self.infoAlert.title.text = "Важное замечание"
+        self.infoAlert.subtitle.text = "Фотографии сохраняются в локальном хранилище приложения на вашем телефоне. При удалении приложения все фотографии будут удалены вместе."
         self.infoAlert.center = self.view.center
         //------xib settings
     }
@@ -168,7 +171,7 @@ extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSou
         guard let controller = self.tabBarController?.viewControllers?[2] as? UINavigationController,
               let sliderViewController = controller.topViewController as? SliderViewController else { return }
         
-            sliderViewController.imageIndex = indexPath.item
+            sliderViewController.viewModel.imageIndex = indexPath.item
             
             self.tabBarController?.selectedIndex = 2
         

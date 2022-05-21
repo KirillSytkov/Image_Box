@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" restorationIdentifier="infoFavorites" id="viB-0A-ZN8" customClass="infoFavorites" customModule="ImageGallery" customModuleProvider="target">
+        <view contentMode="scaleToFill" restorationIdentifier="infoFavorites" id="viB-0A-ZN8" customClass="InfoCustomAlert" customModule="ImageGallery" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -96,6 +96,9 @@
                 <outlet property="attentionButton" destination="VbD-Ue-1sy" id="4xI-qO-yF4"/>
                 <outlet property="attentionView" destination="ZjY-Gs-fda" id="snj-Xx-9J6"/>
                 <outlet property="blurEffectView" destination="QOt-Q9-O0L" id="O1I-Jz-OZZ"/>
+                <outlet property="imageView" destination="o9D-EU-Bla" id="RGI-ZO-IVY"/>
+                <outlet property="subtitle" destination="zzA-Hd-yYR" id="e80-WJ-nPI"/>
+                <outlet property="title" destination="NGb-gl-IZk" id="HMq-2T-m8n"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </view>

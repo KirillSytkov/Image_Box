@@ -43,8 +43,8 @@ class FavoritesViewModel {
             showCenterView?()
         } else {
             hideCenterView?()
-            createCell(images: galleryModel.imageFavorites)
         }
+        createCell(images: galleryModel.imageFavorites)
     }
     
     private func createCell(images: [imageObject]){

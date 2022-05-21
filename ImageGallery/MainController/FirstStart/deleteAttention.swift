@@ -19,7 +19,9 @@ class deleteAttention: UIView {
         self.attentionView.layer.cornerRadius = 15
         self.cancelButton.backgroundColor = .clear
         self.okButton.layer.cornerRadius = 25
+        self.attentionView.backgroundColor = Settings.shared.secondColor
     }
+    
     static func instanceFromNib() -> deleteAttention {
         guard let view = UINib(nibName: "deleteAttention", bundle: nil).instantiate(withOwner: nil, options: nil).first as? deleteAttention else { return deleteAttention() }
         return view

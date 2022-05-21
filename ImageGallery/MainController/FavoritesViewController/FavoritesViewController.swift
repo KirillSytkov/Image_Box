@@ -14,7 +14,7 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var imageViewCenterScreen: UIView!
     
     //MARK: - vars/lets
-    var infoAlert = infoFavorites.instanceFromNib()
+    var infoAlert = InfoCustomAlert.instanceFromNib()
     let itemsPerRow:CGFloat = 4
     let sectionsInserts = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     
@@ -48,6 +48,8 @@ class FavoritesViewController: UIViewController {
         self.view.backgroundColor = Settings.shared.mainColor
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .done, target: self, action: #selector(infoButtonPressed))
         self.infoAlert.addSettings()
+        self.infoAlert.title.text = "Раздел Избранное"
+        self.infoAlert.subtitle.text = "Здесь хранятся ваши избранные фотографии. Чтобы добавить фотографии  в этот раздел нажмите ❤ при просмотре фотографии в альбоме или слайдере."
         self.infoAlert.center = self.view.center
     }
     
@@ -109,8 +111,9 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
         guard let controller = self.tabBarController?.viewControllers?[2] as? UINavigationController,
               let sliderViewController = controller.topViewController as? SliderViewController else { return }
         
-        sliderViewController.imageObjectArray = viewModel.getFavoritesSlider()
-        sliderViewController.imageIndex = indexPath.item
+        sliderViewController.viewModel.images = viewModel.getFavoritesSlider()
+        sliderViewController.viewModel.imageIndex = indexPath.item
+        
         self.tabBarController?.selectedIndex = 2
     }
     

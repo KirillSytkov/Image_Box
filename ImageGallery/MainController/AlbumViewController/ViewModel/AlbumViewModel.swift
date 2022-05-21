@@ -24,7 +24,6 @@ class AlbumViewModel {
             self.reloadCollectionView?()
         }
     }
-    
     var numberOfCells: Int {
         return cellViewModels.count
     }
@@ -41,16 +40,17 @@ class AlbumViewModel {
     
     private func updateAlbumCollection() {
         galleryModel.updateImages()
-        if galleryModel.imagesCollection.isEmpty {
+        if galleryModel.images.isEmpty {
             showCenterView?()
         } else {
             hideCenterView?()
-            createCell(images: galleryModel.imagesCollection)
         }
+        createCell(images: galleryModel.images)
     }
     
     private func createCell(images: [imageObject]){
         var viewModelCell = [ImageCollectionCellViewModel]()
+        
         for image in images {
             viewModelCell.append(ImageCollectionCellViewModel(imageName: image.name))
         }
@@ -63,13 +63,9 @@ class AlbumViewModel {
     }
     
     func clearGallery() {
-        galleryModel.imageFavorites.removeAll()
+        galleryModel.images.removeAll()
     }
-    
-    func getFavoritesSlider() -> [imageObject]{
-        return galleryModel.imageFavorites
-    }
-    
+
     //MARK: - Actions
     func infoButtonPressed() {
         showAlert?()

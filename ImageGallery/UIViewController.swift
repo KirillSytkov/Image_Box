@@ -27,20 +27,5 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
         }
     }
     
-    func mainDateSelected(_ sender: imageObject) -> String {
-        let date = sender.date
-        let formater = DateFormatter()
-        formater.dateFormat = "d MMMM yyyy"
-        return  formater.string(from: date)
-    }
-    
-    func minutesDateSelect(_ sender: imageObject) -> String {
-        let date = sender.date
-        let formater = DateFormatter()
-        formater.dateFormat = "HH:mm"
-        return  formater.string(from: date)
-    }
-    
-    
 }
 
