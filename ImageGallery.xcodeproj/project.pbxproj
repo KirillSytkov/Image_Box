@@ -50,6 +50,8 @@
 		49B6719327B8046A00B0CF36 /* ThemeUserDeafults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B6719227B8046A00B0CF36 /* ThemeUserDeafults.swift */; };
 		49B6719727B80D7500B0CF36 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B6719627B80D7500B0CF36 /* ThemeViewController.swift */; };
 		49B6719A27B80E7600B0CF36 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B6719927B80E7600B0CF36 /* ThemeTableViewCell.swift */; };
+		49CAF082283AA18E00875F21 /* NewPasswrodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CAF081283AA18E00875F21 /* NewPasswrodViewModel.swift */; };
+		49CAF084283AA19C00875F21 /* PasswordSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CAF083283AA19C00875F21 /* PasswordSettingsViewModel.swift */; };
 		49E348B427F3719C00572987 /* GalleryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E348B327F3719C00572987 /* GalleryModel.swift */; };
 		49F1EB4027981DC1000F76FC /* UserDefaults + Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F1EB3F27981DC1000F76FC /* UserDefaults + Keys.swift */; };
 		49F3F232279406320062CA50 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F3F231279406320062CA50 /* Settings.swift */; };
@@ -104,6 +106,8 @@
 		49B6719227B8046A00B0CF36 /* ThemeUserDeafults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeUserDeafults.swift; sourceTree = "<group>"; };
 		49B6719627B80D7500B0CF36 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		49B6719927B80E7600B0CF36 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
+		49CAF081283AA18E00875F21 /* NewPasswrodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswrodViewModel.swift; sourceTree = "<group>"; };
+		49CAF083283AA19C00875F21 /* PasswordSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSettingsViewModel.swift; sourceTree = "<group>"; };
 		49E348B327F3719C00572987 /* GalleryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryModel.swift; sourceTree = "<group>"; };
 		49F1EB3F27981DC1000F76FC /* UserDefaults + Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + Keys.swift"; sourceTree = "<group>"; };
 		49F3F231279406320062CA50 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -332,10 +336,10 @@
 		49AFA08827A6F423005B5674 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				49B6719827B80E6500B0CF36 /* Theme */,
 				4972AB9927AFF94C007AA940 /* SettingsViewController.swift */,
 				4972AB9D27B001C4007AA940 /* CellsObjects.swift */,
 				4972AB9B27AFFA31007AA940 /* SettingsTableViewCell.swift */,
+				49B6719827B80E6500B0CF36 /* Theme */,
 				49AFA08927A6F434005B5674 /* Password Change */,
 			);
 			name = Settings;
@@ -344,8 +348,8 @@
 		49AFA08927A6F434005B5674 /* Password Change */ = {
 			isa = PBXGroup;
 			children = (
-				49AFA08627A6F11B005B5674 /* PasswordSettingsViewController.swift */,
-				49AFA08A27A6F452005B5674 /* NewPasswordViewController.swift */,
+				49CAF07E283AA16300875F21 /* PasswordSettingsVC */,
+				49CAF07D283AA14E00875F21 /* NewPasswordVC */,
 			);
 			name = "Password Change";
 			sourceTree = "<group>";
@@ -357,6 +361,40 @@
 				49B6719927B80E7600B0CF36 /* ThemeTableViewCell.swift */,
 			);
 			name = Theme;
+			sourceTree = "<group>";
+		};
+		49CAF07D283AA14E00875F21 /* NewPasswordVC */ = {
+			isa = PBXGroup;
+			children = (
+				49AFA08A27A6F452005B5674 /* NewPasswordViewController.swift */,
+				49CAF07F283AA17900875F21 /* ViewModel */,
+			);
+			name = NewPasswordVC;
+			sourceTree = "<group>";
+		};
+		49CAF07E283AA16300875F21 /* PasswordSettingsVC */ = {
+			isa = PBXGroup;
+			children = (
+				49AFA08627A6F11B005B5674 /* PasswordSettingsViewController.swift */,
+				49CAF080283AA17E00875F21 /* ViewModel */,
+			);
+			name = PasswordSettingsVC;
+			sourceTree = "<group>";
+		};
+		49CAF07F283AA17900875F21 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				49CAF081283AA18E00875F21 /* NewPasswrodViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		49CAF080283AA17E00875F21 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				49CAF083283AA19C00875F21 /* PasswordSettingsViewModel.swift */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 		49E348B227F3711700572987 /* Model */ = {
@@ -575,6 +613,7 @@
 				49F3F2422794680D0062CA50 /* UIView+extension.swift in Sources */,
 				4972AB9C27AFFA31007AA940 /* SettingsTableViewCell.swift in Sources */,
 				491598E9279C3B57006DE247 /* deleteAttention.swift in Sources */,
+				49CAF084283AA19C00875F21 /* PasswordSettingsViewModel.swift in Sources */,
 				49F3F232279406320062CA50 /* Settings.swift in Sources */,
 				499CDD40279F304500CE34F4 /* MainTabBarViewController.swift in Sources */,
 				4944C2562838237800DD12F7 /* SliderViewModel.swift in Sources */,
@@ -598,6 +637,7 @@
 				49983A1E2826B4FB00721A84 /* PinCodeViewModel.swift in Sources */,
 				49B6719327B8046A00B0CF36 /* ThemeUserDeafults.swift in Sources */,
 				49B6718F27B7E16600B0CF36 /* UILabel+extension.swift in Sources */,
+				49CAF082283AA18E00875F21 /* NewPasswrodViewModel.swift in Sources */,
 				49983A162826B4A600721A84 /* FirstStartViewController.swift in Sources */,
 				4958B9842795CABF00E53167 /* FavoritesViewController.swift in Sources */,
 				49F3F236279424060062CA50 /* UserDefaults.swift in Sources */,

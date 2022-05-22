@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftyKeychainKit
 
 class PasswordSettingsViewController: UIViewController {
 
@@ -19,52 +18,35 @@ class PasswordSettingsViewController: UIViewController {
     @IBOutlet var numberButtons: [UIButton]!
     
     //MARK: - vars/lets
-    let keychain = Keychain(service: "keychain.service")
-    let key = KeychainKey<String>(key: keys.password)
-    var password:String?
+    private var viewModel = PasswordSettingsViewModel()
     
     //MARK: - lyfecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        password = try? keychain.get(key)
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         mainSettings()
-        
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ThemeManager.shared.loadTheme(theme: UserDefaults.standard.integer(forKey: keys.settings) , view: view)
     }
     
     //MARK: - IBActions
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
-        self.textFieldPin.text = ""
+        viewModel.deleteButtonPressed(textField: textFieldPin)
     }
+    
     @IBAction func numberButtonPressed(_ sender: UIButton) {
-        if self.textFieldPin.text!.count < self.password!.count {
-            self.textFieldPin.text! += "\(sender.tag)"
-        }
-        if self.textFieldPin.text!.count == self.password!.count {
-            passwordCheck()
-        }
+        viewModel.numberButtonPressed(number: sender, textField: textFieldPin)
     }
     
     //MARK: - flow func
-    private func passwordCheck() {
-        if self.password == self.textFieldPin.text {
-            guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "NewPasswordViewController") as? NewPasswordViewController else {return}
-            self.navigationController?.pushViewController(controller, animated: true)
-        } else {
-            self.mainLabel.text = "Неверный пин-код"
-            self.subtitleView.isHidden = false
-            self.textFieldPin.text = ""
-            self.view.backgroundColor = .black
-            self.view.addGradient()
-            shakeTextField()
-        }
-    }
+
     private func mainSettings() {
         self.tabBarController?.tabBar.isHidden = true
         self.subtitleView.isHidden = true
@@ -77,12 +59,30 @@ class PasswordSettingsViewController: UIViewController {
         }
     }
 
-    private func shakeTextField() {
-        UIView.animate(withDuration: 0.1) {
-            UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true) {
-                self.textFieldPin.frame.origin.x -= 10
+    private func bind() {
+        self.viewModel.shakeTextField = {
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.1) {
+                    UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true) {
+                        self.textFieldPin.frame.origin.x -= 10
+                    }
+                }
             }
         }
+        self.viewModel.navigate = {
+            DispatchQueue.main.async {
+                guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "NewPasswordViewController") as? NewPasswordViewController else {return}
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+        }
+        self.viewModel.errorPassword = {
+            DispatchQueue.main.async {
+                self.view.backgroundColor = .black
+                self.view.addGradient()
+                self.subtitleView.isHidden = false
+            }
+        }
+        
+        viewModel.addPassword()
     }
-
 }

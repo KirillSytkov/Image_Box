@@ -200,7 +200,7 @@ class SliderViewController: UIViewController {
     
     private func loadRightSwipe() {
         if viewModel.loadFirstImage() {
-            self.firstImageView.frame.origin.x  = self.view.frame.maxX + self.firstImageView.frame.width
+            self.firstImageView.frame.origin.x  = self.view.frame.minX - self.firstImageView.frame.width
             UIView.animate(withDuration: 0.5) {
                 self.firstImageView.frame.origin.x = 0
             } completion: { _ in

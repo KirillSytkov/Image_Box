@@ -6,10 +6,9 @@
 //
 
 import UIKit
-import SwiftyKeychainKit
 
 class NewPasswordViewController: UIViewController {
-    
+
     //MARK: - IBOutlets
     @IBOutlet var numberButtons: [UIButton]!
     @IBOutlet weak var registrationButton: UIButton!
@@ -19,85 +18,85 @@ class NewPasswordViewController: UIViewController {
     @IBOutlet weak var viewMainTitle: UILabel!
     @IBOutlet weak var viewSubtitle: UILabel!
     
-    
     //MARK: - vars/lets
-    let keychain = Keychain(service: "keychain.service")
-    let key = KeychainKey<String>(key: keys.password)
-    var password: String?
-    
+    private var viewModel = NewPasswrodViewModel()
+
     //MARK: - lyfecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         mainSettings()
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.isNavigationBarHidden = false
+        
     }
     //MARK: - IBActions
 
     @IBAction func numberPressed(_ sender: UIButton) {
-        if self.textFieldPin.text!.count < 8 {
-            self.textFieldPin.text! += "\(sender.tag)"
+        viewModel.numberButtonPressed(button: sender, pin: textFieldPin)
 
-        }
-        if self.textFieldPin.text!.count >= 4 && self.password == nil {
-            self.registrationButton.tintColor = .white
-            self.registrationButton.isUserInteractionEnabled = true
-        }
-        passwordCheck()
     }
+    
     @IBAction func registrationButtonPressed(_ sender: UIButton) {
-        self.password = textFieldPin.text ?? ""
-        viewMainTitle.text = "Подтвердите пароль"
-        viewSubtitle.text = "Ваш пароль будет использован при каждом входе в приложение. Он предназначен для защиты от правонарушителей."
-        textFieldPin.text = ""
-        self.registrationButton.addRegistrationButtonSettings()
+        viewModel.registrationButtonPressed(passwordText: textFieldPin)
 
     }
+    
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
-        self.textFieldPin.text = ""
-        self.registrationButton.addRegistrationButtonSettings()
+        viewModel.deleteButtonPressed(textFiled: textFieldPin)
     }
     
     //MARK: - flow func
     private func mainSettings() {
         self.navigationController?.isNavigationBarHidden = true
-        self.tabBarController?.tabBar.isHidden = true
-        self.view.backgroundColor = Settings.shared.mainColor
-        self.pinCodeButtonsView.pinCodeButtonsContainerSettings()
-        self.textFieldPin.addSettingsTextFiled()
-        self.viewMainTitle.addLabelTintColor()
-        self.viewSubtitle.addLabelTintColor()
-        for numberButton in self.numberButtons {
+        view.backgroundColor = Settings.shared.mainColor
+        pinCodeButtonsView.pinCodeButtonsContainerSettings()
+        textFieldPin.addSettingsTextFiled()
+        viewMainTitle.addLabelTintColor()
+        viewSubtitle.addLabelTintColor()
+        viewMainTitle.text = "Установите код доступа"
+        viewSubtitle.text = "Ваш пароль будет использован при каждом входе в приложение. Он преднозначен для защиты от правонарушителей."
+        for numberButton in numberButtons {
             numberButton.addPinCodeButtonsSettings()
         }
-        self.registrationButton.addRegistrationButtonSettings()
+        registrationButton.addRegistrationButtonSettings()
     }
-    private func passwordCheck() {
-        if let password = self.password {
-            if self.textFieldPin.text!.count == password.count{
-                if self.textFieldPin.text == password {
-                    try? keychain.set(password, for: key)
-                    self.navigationController?.popToRootViewController(animated: true)
-                    
-                } else {
-                    self.viewMainTitle.text = "Установите пин-код"
-                    self.viewSubtitle.text = "Неверный пин-код, попробуйте снова"
-                    self.textFieldPin.text = ""
-                    self.password = nil
-                    self.registrationButton.addRegistrationButtonSettings()
-                    return
-                }
+
+    private func bind() {
+
+        self.viewModel.viewMainTitle.bind { [weak self] viewMainTitle in
+            self?.viewMainTitle.text = viewMainTitle
+        }
+        self.viewModel.viewSubtitle.bind { [weak self] viewSubtitle in
+            self?.viewSubtitle.text = viewSubtitle
+        }
+        self.viewModel.registrationButtonActive = {
+            DispatchQueue.main.async {
+                self.registrationButton.tintColor = .white
+                self.registrationButton.isUserInteractionEnabled = true
             }
         }
+        self.viewModel.registrationButtonNoActive = {
+            DispatchQueue.main.async {
+                self.registrationButton.addRegistrationButtonSettings()
+            }
+        }
+        self.viewModel.navigate = {
+            DispatchQueue.main.async {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }
+        
+        
     }
 
-
 }
+ 
