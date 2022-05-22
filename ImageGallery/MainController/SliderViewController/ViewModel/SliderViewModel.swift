@@ -25,28 +25,26 @@ class SliderViewModel {
     var hideFullScreen: (()->())?
     
     //MARK: - vars/lets
-    var galleryModel = GalleryModel()
-    var images =  [imageObject]()
-    var imageIndex = 0
+    var galleryModel = GalleryModel.shared
+    var images = [imageObject]()
+    lazy var imageIndex = GalleryModel.shared.images.count - 1
     var like = false
     
     //MARK: - flow func
     func loadController(_ textFieldImage: UITextField,_ navigationTitle:UINavigationItem) {
-        if galleryModel.images.isEmpty {
+        if images.isEmpty {
+            images = galleryModel.images
             galleryModel.updateImages()
         }
-        
-        if !galleryModel.images.isEmpty {
-            if imageIndex == 0 {
-                imageIndex = galleryModel.images.count - 1
-            }
-            firstImageView.value = ImageManager.shared.loadImage(fileName: galleryModel.images[imageIndex].name)
-            secondImageView.value = ImageManager.shared.loadImage(fileName: galleryModel.images[imageIndex].name)
+
+        if !images.isEmpty {
+            firstImageView.value = ImageManager.shared.loadImage(fileName: images[imageIndex].name)
+            secondImageView.value = ImageManager.shared.loadImage(fileName: images[imageIndex].name)
             textFieldImage.isHidden = false
-            signature.value = galleryModel.images[imageIndex].signature
+            signature.value = images[imageIndex].signature
             
-            navigationTitle.setTitle(mainDateSelected(galleryModel.images[imageIndex]),
-                                     subtitle: minutesDateSelect(galleryModel.images[imageIndex]))
+            navigationTitle.setTitle(mainDateSelected(images[imageIndex]),
+                                     subtitle: minutesDateSelect(images[imageIndex]))
             
             checkLike()
             hideAlert?()
@@ -57,7 +55,7 @@ class SliderViewModel {
     }
     
     func checkLike() {
-        like = galleryModel.images[imageIndex].favorite
+        like = images[imageIndex].favorite
         if like {
             isLike?()
         } else {
@@ -66,16 +64,16 @@ class SliderViewModel {
     }
     
     func loadFirstImage() -> Bool{
-        if !galleryModel.images.isEmpty {
-            firstImageView.value = ImageManager.shared.loadImage(fileName: galleryModel.images[imageIndex].name)
+        if !images.isEmpty {
+            firstImageView.value = ImageManager.shared.loadImage(fileName: images[imageIndex].name)
             return true
         }
         return false
     }
     
     func loadSecondImage() -> Bool {
-        if !galleryModel.images.isEmpty {
-            secondImageView.value = ImageManager.shared.loadImage(fileName: galleryModel.images[imageIndex].name)
+        if !images.isEmpty {
+            secondImageView.value = ImageManager.shared.loadImage(fileName: images[imageIndex].name)
             return true
         }
         return false
@@ -96,25 +94,26 @@ class SliderViewModel {
     }
     
      func updateScrollView(_ navigationTitle: UINavigationItem) {
-        signature.value = galleryModel.images[imageIndex].signature
-        navigationTitle.setTitle(mainDateSelected(galleryModel.images[imageIndex]), subtitle: minutesDateSelect(galleryModel.images[imageIndex]))
+        signature.value = images[imageIndex].signature
+        navigationTitle.setTitle(mainDateSelected(images[imageIndex]), subtitle: minutesDateSelect(images[imageIndex]))
         checkLike()
         
     }
+    
     func clearController() {
         imageIndex = 0
-        galleryModel.images.removeAll()
+        images.removeAll()
     }
     
     //MARK: - Actions
     func singleTap(){
-        if !galleryModel.images.isEmpty {
+        if !images.isEmpty {
             hideFullScreen?()
         }
     }
     
     func doubleTap(_ fullScreen: ImageFullScreen) {
-        if !galleryModel.images.isEmpty {
+        if !images.isEmpty {
             fullScreen.imageZoom.image = firstImageView.value
             showFullScreen?()
         }
@@ -122,20 +121,20 @@ class SliderViewModel {
     }
     
     func swipeLeft() {
-        if !galleryModel.images.isEmpty{
-            galleryModel.images[imageIndex].signature = signature.value ?? ""
-            if imageIndex <= (galleryModel.images.count - 1) && imageIndex > 0{
+        if !images.isEmpty{
+            images[imageIndex].signature = signature.value ?? ""
+            if imageIndex <= (images.count - 1) && imageIndex > 0{
                 imageIndex -= 1
             } else {
-                imageIndex = galleryModel.images.count - 1
+                imageIndex = images.count - 1
             }
         }
     }
     
     func swipeRight() {
-        if !galleryModel.images.isEmpty{
-            galleryModel.images[imageIndex].signature = signature.value ?? ""
-            if imageIndex < (galleryModel.images.count - 1) {
+        if !images.isEmpty{
+            images[imageIndex].signature = signature.value ?? ""
+            if imageIndex < (images.count - 1) {
                 imageIndex += 1
             } else {
                 imageIndex = 0
@@ -143,45 +142,46 @@ class SliderViewModel {
         }
     }
     
-    func textFieldEndEditing() {
-        if !galleryModel.images.isEmpty{
-            galleryModel.images[imageIndex].signature = signature.value ?? ""
-            UserDefaults.standard.set(encodable: galleryModel.images, forKey: keys.images)
+    func textFieldEndEditing(textField: UITextField) {
+        if !images.isEmpty{
+            signature.value = textField.text
+            images[imageIndex].signature = signature.value ?? ""
+            UserDefaults.standard.set(encodable: images, forKey: keys.images)
         }
     }
     
     func likeButtonPresed() {
-        if !galleryModel.images.isEmpty {
+        if !images.isEmpty {
             if !self.like {
                 isLike?()
             } else {
                 noLike?()
             }
             self.like = !like
-            galleryModel.images[imageIndex].favorite = self.like
-            UserDefaults.standard.set(encodable: galleryModel.images, forKey: keys.images)
+            images[imageIndex].favorite = self.like
+            UserDefaults.standard.set(encodable: images, forKey: keys.images)
         }
     }
     
     func trashButtonPressed() {
-        if !galleryModel.images.isEmpty{
+        if !images.isEmpty{
             showDeleteAlert?()
         }
     }
     
     func deleteButtonPressed(_ textFieldImage: UITextField,_ navigationTitle:UINavigationItem) {
-        if !galleryModel.images.isEmpty {
-            galleryModel.images.remove(at: imageIndex)
+        if !images.isEmpty {
+            galleryModel.deleteImage(image: images[imageIndex])
+            images.remove(at: imageIndex)
             if imageIndex != 0 {
                 imageIndex -= 1
             }
-            UserDefaults.standard.set(encodable: galleryModel.images, forKey: keys.images)
-            if !galleryModel.images.isEmpty {
+            if !images.isEmpty {
                 checkLike()
-                signature.value = galleryModel.images[imageIndex].signature
-                secondImageView.value = ImageManager.shared.loadImage(fileName: galleryModel.images[imageIndex].name)
-                firstImageView.value = ImageManager.shared.loadImage(fileName: galleryModel.images[imageIndex].name)
-                navigationTitle.setTitle(mainDateSelected(galleryModel.images[imageIndex]), subtitle: minutesDateSelect(galleryModel.images[imageIndex]))
+                signature.value = images[imageIndex].signature
+                secondImageView.value = ImageManager.shared.loadImage(fileName: images[imageIndex].name)
+                firstImageView.value = ImageManager.shared.loadImage(fileName: images[imageIndex].name)
+                navigationTitle.setTitle(mainDateSelected(images[imageIndex]), subtitle: minutesDateSelect(images[imageIndex]))
             } else {
                 like = false
                 signature.value = ""

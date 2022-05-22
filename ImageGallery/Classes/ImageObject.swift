@@ -7,12 +7,16 @@
 
 import Foundation
 
-class imageObject: Codable {
+class imageObject: Codable,Equatable {
     
     var name: String
     var favorite: Bool
     var signature: String
     var date: Date
+    
+    static func == (lhs: imageObject, rhs: imageObject) -> Bool {
+        return lhs.name == rhs.name && lhs.favorite == rhs.favorite && lhs.signature == rhs.signature && lhs.date == rhs.date
+    }
     
     init(name: String, favorite: Bool, signature: String, date: Date){
         self.name = name

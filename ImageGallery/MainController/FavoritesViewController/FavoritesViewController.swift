@@ -31,10 +31,6 @@ class FavoritesViewController: UIViewController {
         mainSettings()
         viewModel.loadController()
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        viewModel.clearGallery()
-    }
     
     //MARK: - IBActions
     @IBAction func infoButtonPressed() {
@@ -111,7 +107,7 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
         guard let controller = self.tabBarController?.viewControllers?[2] as? UINavigationController,
               let sliderViewController = controller.topViewController as? SliderViewController else { return }
         
-        sliderViewController.viewModel.images = viewModel.getFavoritesSlider()
+        sliderViewController.viewModel.images = GalleryModel.shared.imageFavorites
         sliderViewController.viewModel.imageIndex = indexPath.item
         
         self.tabBarController?.selectedIndex = 2

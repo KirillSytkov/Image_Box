@@ -24,6 +24,7 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
         if let imageString = ImageManager.shared.saveImage(image) {
             let newImageObject = imageObject(name: imageString, favorite: false, signature: "", date: Date())
             ImageManager.shared.addImageArray(newImageObject)
+            GalleryModel.shared.updateImages()
         }
     }
     

@@ -83,11 +83,8 @@ class AlbumViewController: UIViewController{
     
     private func bind() {
         viewModel.reloadCollectionView = {
-            DispatchQueue.main.async {
                 self.collectionView.reloadData()
-            }
         }
-        
         viewModel.hideCenterView = {
                 self.imageViewCenterScreen.isHidden = true
         }
@@ -100,6 +97,7 @@ class AlbumViewController: UIViewController{
                 self.view.addSubview(self.infoAlert)
                 self.animateAlert()
         }
+        
         viewModel.activePlusButton = {
             self.activePlusButtonRotate()
         }
@@ -107,9 +105,6 @@ class AlbumViewController: UIViewController{
         viewModel.deactivatePlusButton = {
             self.deactivatePlusButtonRotate()
         }
-        
-        
-        
     }
 
     private func activePlusButtonRotate() {
@@ -133,6 +128,7 @@ class AlbumViewController: UIViewController{
             }
         }
     }
+    
     private func animateAlert() {
         UIView.animate(withDuration: 0.5) {
             self.infoAlert.blurEffectView.alpha = 0.8
@@ -172,7 +168,6 @@ extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSou
               let sliderViewController = controller.topViewController as? SliderViewController else { return }
         
             sliderViewController.viewModel.imageIndex = indexPath.item
-            
             self.tabBarController?.selectedIndex = 2
         
     }

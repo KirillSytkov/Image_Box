@@ -15,34 +15,34 @@ class ImageManager {
     
     func saveImage( _ image: UIImage) -> String? {
         
-        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first // получили имя папки, куда будем писать файл
-        let fileName = UUID().uuidString // создали уникальное имя файла
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        let fileName = UUID().uuidString
         
-        guard let fileURL = documentsDirectory?.appendingPathComponent(fileName), // добавили имя файла к имени папки
-              let imageDate = image.jpegData(compressionQuality: 1 ) else { return nil } // превратили image в 001010101010 (Data)
+        guard let fileURL = documentsDirectory?.appendingPathComponent(fileName),
+              let imageDate = image.jpegData(compressionQuality: 1 ) else { return nil }
         
-        if FileManager.default.fileExists(atPath: fileURL.path) { // проверяет наличие файла с таким же имененм true или false
-            do { // изолируем кусок кода который может крашнуть приложение
-                try FileManager.default.removeItem(atPath: fileURL.path) // пытаемся удалить его
-            } catch let error { // или ловим ошибку
-                print(error.localizedDescription) // и распечатываем ее
-                return nil // тк все пошло не так - сохранение не удалось, уходим
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            do {
+                try FileManager.default.removeItem(atPath: fileURL.path)
+            } catch let error {
+                print(error.localizedDescription)
+                return nil
             }
         }
         do {
-            try imageDate.write(to: fileURL) // пытаемся сохранить  101010101001010 в путь куда хочу записать файл
-            return fileName // сохранение удалось - возвращаем имя файла для дальшнейшей работы
-        } catch let error { // или ловим ошибку
-            print(error.localizedDescription) // распечатываем еще
-            return nil // тк все пошло не так - сохранение не удалось, уходим
+            try imageDate.write(to: fileURL)
+            return fileName
+        } catch let error {
+            print(error.localizedDescription)
+            return nil
         }
     }
     
     func loadImage(fileName: String) -> UIImage? {
-        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil } // получили имя папки , где должен лежать файл
-        let fileURL = documentsDirectory.appendingPathComponent(fileName) // добавили имя файла к имени папки
-        let image = UIImage(contentsOfFile: fileURL.path) // прочитали файл, превратив его в UIimage
-        return image // вернули картинку
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+        let image = UIImage(contentsOfFile: fileURL.path)
+        return image 
     }
     
     func addImageArray(_ image: imageObject){

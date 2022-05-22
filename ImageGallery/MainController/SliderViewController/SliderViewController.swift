@@ -75,12 +75,7 @@ class SliderViewController: UIViewController {
     
     //END OF Recognizeres ----
     @IBAction func textFieldSave(_ sender: UITextField) {
-        viewModel.textFieldEndEditing()
-        
-//        if !imageObjectArray.isEmpty{
-//            imageObjectArray[imageIndex].signature = self.textFieldImage.text ?? ""
-//            UserDefaults.standard.set(encodable: imageObjectArray, forKey: keys.images)
-//        }
+        viewModel.textFieldEndEditing(textField:sender)
     }
     
     @IBAction func likeButtonPressed(_ sender: UIBarButtonItem) {

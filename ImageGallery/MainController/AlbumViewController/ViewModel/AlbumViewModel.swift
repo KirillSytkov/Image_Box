@@ -16,7 +16,7 @@ class AlbumViewModel {
     var showAlert: (()->())?
     var activePlusButton: (()->())?
     var deactivatePlusButton:(()->())?
-    private var galleryModel = GalleryModel()
+    private var galleryModel = GalleryModel.shared
     private var firstStart = UserDefaults.standard.value(Bool.self, forKey: keys.albumStart)
     private var plusButtonActive = false
     private var cellViewModels: [ImageCollectionCellViewModel] = [ImageCollectionCellViewModel]() {
@@ -41,9 +41,9 @@ class AlbumViewModel {
     private func updateAlbumCollection() {
         galleryModel.updateImages()
         if galleryModel.images.isEmpty {
-            showCenterView?()
-        } else {
-            hideCenterView?()
+                showCenterView?()
+            } else {
+                hideCenterView?()
         }
         createCell(images: galleryModel.images)
     }

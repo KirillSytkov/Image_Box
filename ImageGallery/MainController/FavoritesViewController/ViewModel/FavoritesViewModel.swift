@@ -14,7 +14,7 @@ class FavoritesViewModel {
     var showCenterView: (()->())?
     var hideCenterView:(()->())?
     var showAlert: (()->())?
-    private var galleryModel = GalleryModel()
+    private var galleryModel = GalleryModel.shared
     private var firstStart = UserDefaults.standard.value(Bool.self, forKey: keys.favoriteStart)
     
     private var cellViewModels: [ImageCollectionCellViewModel] = [ImageCollectionCellViewModel]() {
@@ -58,10 +58,6 @@ class FavoritesViewModel {
     
     func getCellViewModel( at indexPath: IndexPath ) -> ImageCollectionCellViewModel {
         return cellViewModels[indexPath.item]
-    }
- 
-    func clearGallery() {
-        galleryModel.imageFavorites.removeAll()
     }
     
     func getFavoritesSlider() -> [imageObject]{
