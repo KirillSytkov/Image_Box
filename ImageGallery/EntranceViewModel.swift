@@ -44,7 +44,7 @@ class EntranceViewModel {
         if self.password == textField.text {
             navigate?()
         } else {
-            mainLabel.value = "Неверный пин-код"
+            mainLabel.value = "Invalid password"
             textField.text = ""
             errorPassword?()
             shakeTextField?()

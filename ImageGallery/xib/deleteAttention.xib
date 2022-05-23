@@ -58,7 +58,7 @@
                                 <action selector="cancelButtonPressed:" destination="Yxq-5X-HAZ" eventType="touchUpInside" id="dQZ-f6-Rbe"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы действительно хотите удалить фотографию?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2wZ-aW-gdG">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure want to delete the photo?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2wZ-aW-gdG">
                             <rect key="frame" x="10" y="67" width="294" height="43"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

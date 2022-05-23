@@ -12,9 +12,9 @@ class EntranceViewController: UIViewController {
     //MARK: - IBOutlets
     
     @IBOutlet weak var mainLabel: UILabel!
+    @IBOutlet weak var textFieldPin: UITextField!
     @IBOutlet weak var subtitleView: UILabel!
     @IBOutlet weak var pinCodeButtonsView: UIView!
-    @IBOutlet weak var textFieldPin: UITextField!
     @IBOutlet var numberButtons: [UIButton]!
     
     //MARK: - vars/lets
@@ -48,12 +48,14 @@ class EntranceViewController: UIViewController {
     //MARK: - flow func
 
     private func mainSettings() {
-        self.navigationController?.isNavigationBarHidden = true
-        self.subtitleView.isHidden = true
-        self.view.backgroundColor = Settings.shared.mainColor
-        self.pinCodeButtonsView.pinCodeButtonsContainerSettings()
-        self.textFieldPin.addSettingsTextFiled()
-        self.mainLabel.addLabelTintColor()
+        navigationController?.isNavigationBarHidden = true
+        subtitleView.isHidden = true
+        view.backgroundColor = Settings.shared.mainColor
+        pinCodeButtonsView.pinCodeButtonsContainerSettings()
+        textFieldPin.addSettingsTextFiled()
+        mainLabel.text = "Enter password"
+        mainLabel.textColor = UIColor(named: "textColor")
+        subtitleView.text = "Try again"
         for numberButton in self.numberButtons {
             numberButton.addPinCodeButtonsSettings()
         }

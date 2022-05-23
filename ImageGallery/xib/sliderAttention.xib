@@ -16,14 +16,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g0e-hf-BcB" userLabel="attentionView">
                     <rect key="frame" x="50" y="323" width="314" height="250"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Раздел слайдер" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="BDV-xL-2rb">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section Slider" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="BDV-xL-2rb">
                             <rect key="frame" x="30" y="60" width="254" height="30"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавьте фотографии в основной альбом чтобы просматривать их в этом разделе" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="47v-LY-un4">
-                            <rect key="frame" x="30" y="110" width="254" height="95.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add photos to the main album to view them in this section" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="47v-LY-un4">
+                            <rect key="frame" x="30" y="110" width="254" height="72"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -61,6 +61,8 @@
                 <constraint firstItem="g0e-hf-BcB" firstAttribute="centerY" secondItem="DAc-7M-sO1" secondAttribute="centerY" id="lS5-wb-lz8"/>
             </constraints>
             <connections>
+                <outlet property="alertDescription" destination="47v-LY-un4" id="GLP-Uw-smy"/>
+                <outlet property="alertTitle" destination="BDV-xL-2rb" id="odj-1D-Saz"/>
                 <outlet property="attentionView" destination="g0e-hf-BcB" id="k3B-wt-ga8"/>
             </connections>
             <point key="canvasLocation" x="900.00000000000011" y="157.36607142857142"/>

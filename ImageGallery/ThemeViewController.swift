@@ -15,7 +15,7 @@ class ThemeViewController: UIViewController {
     
     
     //MARK: - vars/lets
-    var theme = ["Устройство", "Светлая" , "Темная"]
+    var theme = ["Current", "Light" , "Dark"]
     
     //MARK: - lyfecycle
     override func viewDidLoad() {

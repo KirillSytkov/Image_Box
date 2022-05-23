@@ -99,15 +99,18 @@ class SliderViewController: UIViewController {
         navBarInfoButtonAdd()
         self.view.backgroundColor = Settings.shared.sliderColor
         
-        self.textFieldImage.attributedPlaceholder = NSAttributedString(string: "Добавить подпись...", attributes: [NSAttributedString.Key.foregroundColor: Settings.shared.textColor])
+        self.textFieldImage.attributedPlaceholder = NSAttributedString(string: "Add description...", attributes: [NSAttributedString.Key.foregroundColor: Settings.shared.textColor])
         self.textFieldImage.backgroundColor = UIColor.clear
         self.textFieldImage.borderStyle = .none
         self.textFieldImage.textColor = Settings.shared.textColor
         //xib settings
         self.sliderAttentionScreen.addSettings()
         self.sliderAttentionScreen.center = self.view.center
+        self.sliderAttentionScreen.alertTitle.text = "Section Slider"
+        self.sliderAttentionScreen.alertDescription.text = "Add photos to the main album to view them in this section"
         self.fullScreen.alpha = 0
         self.deleteScreen.addSettings()
+        self.deleteScreen.textLabel.text = "Are you sure want to delete the photo?"
         self.deleteScreen.center = self.view.center
         self.deleteScreen.okButton.addTarget(self, action: #selector(deleteOkButtonPresed(_:)), for: .touchUpInside)
         //xib settings

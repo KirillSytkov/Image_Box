@@ -12,7 +12,7 @@ class PasswordSettingsViewController: UIViewController {
     //MARK: - IBOutlets
     
     @IBOutlet weak var mainLabel: UILabel!
-    @IBOutlet weak var subtitleView: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var pinCodeButtonsView: UIView!
     @IBOutlet weak var textFieldPin: UITextField!
     @IBOutlet var numberButtons: [UIButton]!
@@ -49,11 +49,13 @@ class PasswordSettingsViewController: UIViewController {
 
     private func mainSettings() {
         self.tabBarController?.tabBar.isHidden = true
-        self.subtitleView.isHidden = true
+        self.subtitleLabel.isHidden = true
         self.view.backgroundColor = Settings.shared.mainColor
         self.pinCodeButtonsView.pinCodeButtonsContainerSettings()
         self.textFieldPin.addSettingsTextFiled()
-        self.mainLabel.addLabelTintColor()
+        self.mainLabel.textColor = UIColor(named: "textColor")
+        self.subtitleLabel.text = "Try again"
+        self.mainLabel.text = "Enter password"
         for numberButton in self.numberButtons {
             numberButton.addPinCodeButtonsSettings()
         }
@@ -79,7 +81,7 @@ class PasswordSettingsViewController: UIViewController {
             DispatchQueue.main.async {
                 self.view.backgroundColor = .black
                 self.view.addGradient()
-                self.subtitleView.isHidden = false
+                self.subtitleLabel.isHidden = false
             }
         }
         

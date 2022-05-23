@@ -15,7 +15,9 @@ class AlbumViewController: UIViewController{
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet var importButtons: [UIButton]!
-    @IBOutlet weak var imageViewCenterScreen: UIView!
+    @IBOutlet weak var viewCenterScreen: UIView!
+    @IBOutlet weak var imageViewCenter: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
 
     //MARK: - vars/lets
     let infoAlert = InfoCustomAlert.instanceFromNib()
@@ -72,13 +74,26 @@ class AlbumViewController: UIViewController{
             importButton.addButtonRadius(15)
             importButton.alpha = 0
         }
+        importButtons[0].setTitle("Open Camera", for: .normal)
+        importButtons[1].setTitle("Import Photo", for: .normal)
+        self.descriptionLabel.text = "Click '+' to import photos"
+        self.descriptionLabel.textColor = UIColor(named: "textColor")
+        getThemeImage()
         //------xib settings
         self.infoAlert.addSettings()
         self.infoAlert.imageView.image = UIImage(named: "firstAttention")
-        self.infoAlert.title.text = "Важное замечание"
-        self.infoAlert.subtitle.text = "Фотографии сохраняются в локальном хранилище приложения на вашем телефоне. При удалении приложения все фотографии будут удалены вместе."
+        self.infoAlert.title.text = "Important note"
+        self.infoAlert.subtitle.text = "The photos are saved to the app's local storage on your phone. When you uninstall the application, all photos will be deleted together."
         self.infoAlert.center = self.view.center
         //------xib settings
+    }
+    
+    private func getThemeImage() {
+        if self.traitCollection.userInterfaceStyle == .dark {
+            imageViewCenter.image = UIImage(named: "whiteBox")
+        } else {
+            imageViewCenter.image = UIImage(named: "blackBox")
+        }
     }
     
     private func bind() {
@@ -86,11 +101,11 @@ class AlbumViewController: UIViewController{
                 self.collectionView.reloadData()
         }
         viewModel.hideCenterView = {
-                self.imageViewCenterScreen.isHidden = true
+                self.viewCenterScreen.isHidden = true
         }
         
         viewModel.showCenterView = {
-                self.imageViewCenterScreen.isHidden = false
+                self.viewCenterScreen.isHidden = false
         }
         
         viewModel.showAlert = {

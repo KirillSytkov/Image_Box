@@ -46,7 +46,6 @@
 		49AFA08727A6F11B005B5674 /* PasswordSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AFA08627A6F11B005B5674 /* PasswordSettingsViewController.swift */; };
 		49AFA08B27A6F452005B5674 /* NewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AFA08A27A6F452005B5674 /* NewPasswordViewController.swift */; };
 		49B4FADB27B3D63900A82F5E /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4FADA27B3D63900A82F5E /* ImageCollectionViewCell.swift */; };
-		49B6718F27B7E16600B0CF36 /* UILabel+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B6718E27B7E16600B0CF36 /* UILabel+extension.swift */; };
 		49B6719327B8046A00B0CF36 /* ThemeUserDeafults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B6719227B8046A00B0CF36 /* ThemeUserDeafults.swift */; };
 		49B6719727B80D7500B0CF36 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B6719627B80D7500B0CF36 /* ThemeViewController.swift */; };
 		49B6719A27B80E7600B0CF36 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B6719927B80E7600B0CF36 /* ThemeTableViewCell.swift */; };
@@ -102,7 +101,6 @@
 		49AFA08627A6F11B005B5674 /* PasswordSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSettingsViewController.swift; sourceTree = "<group>"; };
 		49AFA08A27A6F452005B5674 /* NewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewController.swift; sourceTree = "<group>"; };
 		49B4FADA27B3D63900A82F5E /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		49B6718E27B7E16600B0CF36 /* UILabel+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+extension.swift"; sourceTree = "<group>"; };
 		49B6719227B8046A00B0CF36 /* ThemeUserDeafults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeUserDeafults.swift; sourceTree = "<group>"; };
 		49B6719627B80D7500B0CF36 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		49B6719927B80E7600B0CF36 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
@@ -420,7 +418,6 @@
 				49F3F2412794680D0062CA50 /* UIView+extension.swift */,
 				494DA66727B7DEF100B238BC /* UIButtons+extension.swift */,
 				49318CA727969379006EDECB /* UIViewController+extension.swift */,
-				49B6718E27B7E16600B0CF36 /* UILabel+extension.swift */,
 				491F5307279C829500405F44 /* UINavigationBar+extension.swift */,
 				492FD00F27B94E66007C99C8 /* UITextField+extension.swift */,
 			);
@@ -636,7 +633,6 @@
 				49B6719A27B80E7600B0CF36 /* ThemeTableViewCell.swift in Sources */,
 				49983A1E2826B4FB00721A84 /* PinCodeViewModel.swift in Sources */,
 				49B6719327B8046A00B0CF36 /* ThemeUserDeafults.swift in Sources */,
-				49B6718F27B7E16600B0CF36 /* UILabel+extension.swift in Sources */,
 				49CAF082283AA18E00875F21 /* NewPasswrodViewModel.swift in Sources */,
 				49983A162826B4A600721A84 /* FirstStartViewController.swift in Sources */,
 				4958B9842795CABF00E53167 /* FavoritesViewController.swift in Sources */,

@@ -14,8 +14,8 @@ class SettingsViewController: UIViewController {
     
     
     //MARK: - vars/lets
-    var cellsObjects = [Cell(name: "Пароль", image: UIImage(systemName: "lock")!),
-                        Cell(name: "Тема", image: UIImage(systemName: "moon.circle")!)]
+    var cellsObjects = [Cell(name: "Password", image: UIImage(systemName: "lock")!),
+                        Cell(name: "Theme", image: UIImage(systemName: "moon.circle")!)]
     
     //MARK: - lyfecycle
     override func viewDidLoad() {

@@ -9,6 +9,8 @@ import UIKit
 
 class sliderAttention: UIView {
     @IBOutlet weak var attentionView: UIView!
+    @IBOutlet weak var alertTitle: UILabel!
+    @IBOutlet weak var alertDescription: UILabel!
     
     func addSettings() {
         self.attentionView.layer.cornerRadius = 15

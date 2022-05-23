@@ -190,7 +190,7 @@ class SliderViewModel {
                 noLike?()
                 secondImageView.value = nil
                 firstImageView.value = nil
-                navigationTitle.setTitle("Слайдер", subtitle: "")
+                navigationTitle.setTitle("Slider", subtitle: "")
                 showAlert?()
             }
         }

@@ -23,6 +23,7 @@ class ThemeManager {
         default:
             break
         }
+        
         UserDefaults.standard.set(theme, forKey: keys.settings)
     }
 }

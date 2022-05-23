@@ -44,14 +44,14 @@
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Продолжить">
+                                <buttonConfiguration key="configuration" style="plain" title="Continue">
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="25"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="continueButtonPressed:" destination="znD-16-PxT" eventType="touchUpInside" id="tCW-3A-onf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добро пожаловать" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="lu8-Jx-ICi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="lu8-Jx-ICi">
                                 <rect key="frame" x="20" y="634.5" width="374" height="49"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="41"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,7 +61,7 @@
                                 <rect key="frame" x="0.0" y="166.5" width="414" height="448"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Полюзуясь приложением Вы принимаете Условия пользования и Политики конфиденциальности" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JZ3-f0-tCr">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By using the application you accept the Terms of Use and Privacy Policy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JZ3-f0-tCr">
                                 <rect key="frame" x="20" y="703.5" width="374" height="33.5"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -98,11 +98,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="kvt-nQ-WfS"/>
                     <connections>
+                        <outlet property="appLabel" destination="WHR-K4-AuX" id="ok7-bM-mVN"/>
                         <outlet property="continueButton" destination="DjS-uf-uPW" id="lao-WC-a09"/>
                         <outlet property="privacyPoliceText" destination="JZ3-f0-tCr" id="Mxr-Xd-Zys"/>
-                        <outletCollection property="textLabel" destination="WHR-K4-AuX" collectionClass="NSMutableArray" id="lzF-2s-GsL"/>
-                        <outletCollection property="textLabel" destination="lu8-Jx-ICi" collectionClass="NSMutableArray" id="LIZ-KW-fJr"/>
-                        <outletCollection property="textLabel" destination="JZ3-f0-tCr" collectionClass="NSMutableArray" id="bjR-8L-ehc"/>
+                        <outlet property="welcomeTitle" destination="lu8-Jx-ICi" id="G6d-UJ-5dO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdu-O8-kgp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -851,11 +850,11 @@
             </objects>
             <point key="canvasLocation" x="2074" y="1455"/>
         </scene>
-        <!--Настройки-->
+        <!--Settings-->
         <scene sceneID="iij-Iz-Tup">
             <objects>
                 <navigationController id="cg5-9r-1zI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Настройки" image="gearshape.fill" catalog="system" selectedImage="gearshape" id="fEA-ri-SpT">
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape.fill" catalog="system" selectedImage="gearshape" id="fEA-ri-SpT">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SB2-3B-zC6">
@@ -884,13 +883,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6d-Bf-wM3" userLabel="boxImport">
                                 <rect key="frame" x="30" y="348" width="354" height="200"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нажмте &quot;+&quot; для импорта фотографий" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0a-Ml-4u7">
-                                        <rect key="frame" x="0.0" y="179.5" width="354" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click &quot;+&quot; to import photos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0a-Ml-4u7">
+                                        <rect key="frame" x="0.0" y="176" width="354" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whiteBox" translatesAutoresizingMaskIntoConstraints="NO" id="oe0-6s-tFZ">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackBox" translatesAutoresizingMaskIntoConstraints="NO" id="oe0-6s-tFZ">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="160"/>
                                     </imageView>
                                 </subviews>
@@ -967,14 +966,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="UtJ-RX-q4h">
-                                <rect key="frame" x="117.5" y="759" width="179" height="44"/>
+                                <rect key="frame" x="145" y="759" width="124" height="44"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="xKL-QL-M8v"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Импортировать фотографии"/>
-                                <buttonConfiguration key="configuration" style="plain" title="ИМПОРТ ФОТОГРАФИЙ">
+                                <buttonConfiguration key="configuration" style="plain" title="IMPORT PHOTO">
                                     <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="13"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -982,13 +981,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="EFx-MW-uFK">
-                                <rect key="frame" x="117.5" y="705" width="179" height="44"/>
+                                <rect key="frame" x="145" y="705" width="124" height="44"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="NEU-bv-ZhA"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="ОТКРЫТЬ КАМЕРУ">
+                                <buttonConfiguration key="configuration" style="plain" title="OPEN CAMERA">
                                     <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="13"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -1020,19 +1019,21 @@
                             <constraint firstItem="UtJ-RX-q4h" firstAttribute="centerX" secondItem="uEC-PI-9Vu" secondAttribute="centerX" id="suN-To-06h"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Альбом" id="u8E-7g-sXg">
+                    <tabBarItem key="tabBarItem" title="Album" id="u8E-7g-sXg">
                         <imageReference key="image" image="photo.fill.on.rectangle.fill" catalog="system" symbolScale="large"/>
                         <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <imageReference key="selectedImage" image="photo.on.rectangle" catalog="system" symbolScale="large"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" title="Альбом" id="dsn-TM-amS"/>
+                    <navigationItem key="navigationItem" title="Album" id="dsn-TM-amS"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="blurView" destination="dHZ-V9-PAJ" id="KX8-Az-W46"/>
                         <outlet property="collectionView" destination="TgW-BL-uUM" id="4GI-ec-6AP"/>
-                        <outlet property="imageViewCenterScreen" destination="m6d-Bf-wM3" id="cDv-HC-akm"/>
+                        <outlet property="descriptionLabel" destination="P0a-Ml-4u7" id="Bne-SF-2kR"/>
+                        <outlet property="imageViewCenter" destination="oe0-6s-tFZ" id="sIR-WY-Fxm"/>
                         <outlet property="navigationBar" destination="dsn-TM-amS" id="jg9-xx-VsN"/>
                         <outlet property="plusButton" destination="xYr-Mo-HGG" id="BPc-71-NKd"/>
+                        <outlet property="viewCenterScreen" destination="m6d-Bf-wM3" id="Fds-tU-nw1"/>
                         <outletCollection property="importButtons" destination="EFx-MW-uFK" collectionClass="NSMutableArray" id="RUX-WT-qFf"/>
                         <outletCollection property="importButtons" destination="UtJ-RX-q4h" collectionClass="NSMutableArray" id="Rie-Ho-b7N"/>
                     </connections>
@@ -1058,7 +1059,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yOF-Gk-H5F">
                                                 <rect key="frame" x="30" y="661" width="354" height="34"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <action selector="textFieldSave:" destination="oMc-6R-a0e" eventType="editingDidEnd" id="8Mx-PL-poW"/>
@@ -1119,10 +1120,10 @@
                             <constraint firstItem="1ih-tq-zYD" firstAttribute="leading" secondItem="sQk-7M-OmS" secondAttribute="leading" id="wco-o3-jil"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Фотослайдер" image="arrow.left.and.right.square.fill" catalog="system" id="Fs6-Sr-d82">
+                    <tabBarItem key="tabBarItem" title=" Foto slider" image="arrow.left.and.right.square.fill" catalog="system" id="Fs6-Sr-d82">
                         <imageReference key="selectedImage" image="arrow.left.and.right.square" catalog="system" symbolScale="large"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" title="Слайдер" id="I3t-eR-QK7"/>
+                    <navigationItem key="navigationItem" title="Slider" id="I3t-eR-QK7"/>
                     <connections>
                         <outlet property="bottomConstraint" destination="78S-it-Jy0" id="M11-Pk-mZk"/>
                         <outlet property="bottomNavigation" destination="Fs6-Sr-d82" id="yJd-4l-j44"/>
@@ -1137,7 +1138,7 @@
             </objects>
             <point key="canvasLocation" x="2073.913043478261" y="2140.8482142857142"/>
         </scene>
-        <!--Настройки-->
+        <!--Settings-->
         <scene sceneID="jcJ-Na-M52">
             <objects>
                 <viewController storyboardIdentifier="SettingsViewController" id="hN1-Bx-XBf" customClass="SettingsViewController" customModule="ImageGallery" customModuleProvider="target" sceneMemberID="viewController">
@@ -1215,7 +1216,7 @@
                             <constraint firstItem="d2j-El-mrZ" firstAttribute="top" secondItem="OPi-K4-iBn" secondAttribute="top" id="jKp-Ow-K0e"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Настройки" id="RqM-cZ-h5T"/>
+                    <navigationItem key="navigationItem" title="Settings" id="RqM-cZ-h5T"/>
                     <connections>
                         <outlet property="settingsTableView" destination="d2j-El-mrZ" id="tR6-N5-hmz"/>
                     </connections>
@@ -1296,11 +1297,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rqj-KS-KJ1" userLabel="boxImport">
                                 <rect key="frame" x="30" y="348" width="354" height="200"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whitePhoto" translatesAutoresizingMaskIntoConstraints="NO" id="lju-Xl-NQu" userLabel="photo">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="lju-Xl-NQu" userLabel="photo">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="160"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нажмите  &quot;❤&quot; для импорта фотографий в избранное во время их просмотра" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ft-Is-9Mt">
-                                        <rect key="frame" x="0.0" y="159" width="354" height="41"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ft-Is-9Mt">
+                                        <rect key="frame" x="0.0" y="139" width="354" height="61"/>
+                                        <string key="text">This is where your favorite photos are stored. To add photos to this section, press ❤ while viewing a photo in an album or slider</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1371,12 +1373,14 @@
                             <constraint firstItem="aeW-rN-aNn" firstAttribute="leading" secondItem="psC-0O-YOA" secondAttribute="leading" id="ycv-e6-1Rb"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Избранное" image="heart.fill" catalog="system" id="dEk-ew-z19">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart.fill" catalog="system" id="dEk-ew-z19">
                         <imageReference key="selectedImage" image="heart" catalog="system" symbolScale="large"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" title="Избранное" id="m9Q-LS-Jwd"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="m9Q-LS-Jwd"/>
                     <connections>
+                        <outlet property="centerImageView" destination="lju-Xl-NQu" id="gmX-O7-Nut"/>
                         <outlet property="collectionView" destination="aeW-rN-aNn" id="FD4-WA-Oad"/>
+                        <outlet property="descriptionLabel" destination="4ft-Is-9Mt" id="MKK-mw-W3i"/>
                         <outlet property="imageViewCenterScreen" destination="Rqj-KS-KJ1" id="6BD-15-OaG"/>
                     </connections>
                 </viewController>
@@ -1680,7 +1684,7 @@
                     <connections>
                         <outlet property="mainLabel" destination="qm8-Wh-MJi" id="7bM-dJ-Qgo"/>
                         <outlet property="pinCodeButtonsView" destination="mqo-Fg-j0T" id="5SA-y0-nib"/>
-                        <outlet property="subtitleView" destination="nwr-Un-Gtx" id="y6f-xX-iM3"/>
+                        <outlet property="subtitleLabel" destination="nwr-Un-Gtx" id="y6f-xX-iM3"/>
                         <outlet property="textFieldPin" destination="g5h-W8-ZHK" id="vs0-d7-hVx"/>
                         <outletCollection property="numberButtons" destination="1FY-NB-LuL" collectionClass="NSMutableArray" id="bDC-1f-Ngh"/>
                         <outletCollection property="numberButtons" destination="Ufw-ZY-3xg" collectionClass="NSMutableArray" id="UzI-Q1-U0S"/>
@@ -2032,6 +2036,8 @@
         <image name="arrow.left.and.right.square" catalog="system" width="128" height="114"/>
         <image name="arrow.left.and.right.square.fill" catalog="system" width="128" height="114"/>
         <image name="arrow.left.arrow.right.square.fill" catalog="system" width="128" height="114"/>
+        <image name="blackBox" width="981" height="948"/>
+        <image name="blackPhoto" width="800" height="800"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="delete.left.fill" catalog="system" width="128" height="104"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
@@ -2042,8 +2048,6 @@
         <image name="lock" catalog="system" width="128" height="128"/>
         <image name="photo.fill.on.rectangle.fill" catalog="system" width="128" height="97"/>
         <image name="photo.on.rectangle" catalog="system" width="128" height="97"/>
-        <image name="whiteBox" width="981" height="948"/>
-        <image name="whitePhoto" width="800" height="800"/>
         <image name="whitePlus" width="594" height="600"/>
         <namedColor name="textColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

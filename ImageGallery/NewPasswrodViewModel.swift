@@ -34,8 +34,8 @@ class NewPasswrodViewModel {
     
     func registrationButtonPressed(passwordText: UITextField) {
         password = passwordText.text ?? ""
-        viewMainTitle.value = "Подтвердите пароль"
-        viewSubtitle.value = "Ваш пароль будет использован при каждом входе в приложение. Он предназначен для защиты от правонарушителей."
+        viewMainTitle.value = "Confirm the password"
+        viewSubtitle.value = "Your password will be used each time you log into the application. It is designed to protect against offenders."
         passwordText.text = ""
         registrationButtonNoActive?()
     }
@@ -53,8 +53,8 @@ class NewPasswrodViewModel {
                     try? keychain.set(password, for: key)
                     navigate?()
                 } else {
-                    viewMainTitle.value = "Установите пин-код"
-                    viewSubtitle.value = "Неверный пин-код, попробуйте снова"
+                    viewMainTitle.value = "Set password"
+                    viewSubtitle.value = "Invalid password, please try again"
                     textField.text = ""
                     self.password = nil
                     registrationButtonNoActive?()

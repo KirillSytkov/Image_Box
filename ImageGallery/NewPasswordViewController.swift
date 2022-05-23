@@ -60,14 +60,15 @@ class NewPasswordViewController: UIViewController {
         view.backgroundColor = Settings.shared.mainColor
         pinCodeButtonsView.pinCodeButtonsContainerSettings()
         textFieldPin.addSettingsTextFiled()
-        viewMainTitle.addLabelTintColor()
-        viewSubtitle.addLabelTintColor()
-        viewMainTitle.text = "Установите код доступа"
-        viewSubtitle.text = "Ваш пароль будет использован при каждом входе в приложение. Он преднозначен для защиты от правонарушителей."
+        viewMainTitle.textColor = UIColor(named: "textColor")
+        viewSubtitle.textColor = UIColor(named: "textColor")
+        viewMainTitle.text = "Set password"
+        viewSubtitle.text = "Your password will be used each time you log into the application. It is designed to protect against offenders."
         for numberButton in numberButtons {
             numberButton.addPinCodeButtonsSettings()
         }
         registrationButton.addRegistrationButtonSettings()
+        registrationButton.setTitle("Set password", for: .normal)
     }
 
     private func bind() {

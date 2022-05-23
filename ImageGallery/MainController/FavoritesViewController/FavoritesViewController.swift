@@ -12,6 +12,8 @@ class FavoritesViewController: UIViewController {
     //MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var imageViewCenterScreen: UIView!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var centerImageView: UIImageView!
     
     //MARK: - vars/lets
     var infoAlert = InfoCustomAlert.instanceFromNib()
@@ -44,16 +46,26 @@ class FavoritesViewController: UIViewController {
         self.view.backgroundColor = Settings.shared.mainColor
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .done, target: self, action: #selector(infoButtonPressed))
         self.infoAlert.addSettings()
-        self.infoAlert.title.text = "Раздел Избранное"
-        self.infoAlert.subtitle.text = "Здесь хранятся ваши избранные фотографии. Чтобы добавить фотографии  в этот раздел нажмите ❤ при просмотре фотографии в альбоме или слайдере."
+        self.infoAlert.title.text = "Section Favorites"
+        self.infoAlert.subtitle.text = "This is where your favorite photos are stored. To add photos to this section, press ❤ while viewing a photo in an album or slider"
         self.infoAlert.center = self.view.center
+        descriptionLabel.text = "Press ❤ to import photos to favorites while viewing them"
+        descriptionLabel.textColor = UIColor(named: "textColor")
+        getThemeImage()
     }
     
     private func animateAlert() {
         UIView.animate(withDuration: 0.5) {
             self.infoAlert.blurEffectView.alpha = 0.8
             self.infoAlert.attentionView.alpha = 1
-            
+        }
+    }
+    
+    private func getThemeImage() {
+        if self.traitCollection.userInterfaceStyle == .dark {
+            centerImageView.image = UIImage(named: "whitePhoto")
+        } else {
+            centerImageView.image = UIImage(named: "blackPhoto")
         }
     }
     
@@ -65,16 +77,16 @@ class FavoritesViewController: UIViewController {
         }
         
         viewModel.hideCenterView = {
-                self.imageViewCenterScreen.isHidden = true
+            self.imageViewCenterScreen.isHidden = true
         }
         
         viewModel.showCenterView = {
-                self.imageViewCenterScreen.isHidden = false
+            self.imageViewCenterScreen.isHidden = false
         }
         
         viewModel.showAlert = {
-                self.view.addSubview(self.infoAlert)
-                self.animateAlert()
+            self.view.addSubview(self.infoAlert)
+            self.animateAlert()
         }
     }
     
