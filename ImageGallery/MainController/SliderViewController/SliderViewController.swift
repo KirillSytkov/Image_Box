@@ -103,6 +103,7 @@ class SliderViewController: UIViewController {
         self.textFieldImage.backgroundColor = UIColor.clear
         self.textFieldImage.borderStyle = .none
         self.textFieldImage.textColor = Settings.shared.textColor
+        self.textFieldImage.delegate = self
         //xib settings
         self.sliderAttentionScreen.addSettings()
         self.sliderAttentionScreen.center = self.view.center
@@ -265,4 +266,10 @@ class SliderViewController: UIViewController {
     }
 }
 
+extension SliderViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+}
 
