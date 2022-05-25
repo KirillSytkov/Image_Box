@@ -149,6 +149,7 @@
 		492DC65527914A2100B41774 /* ImageGallery */ = {
 			isa = PBXGroup;
 			children = (
+				498D95C0283E28B0004DFDE2 /* new */,
 				492DC66427914A2100B41774 /* Info.plist */,
 				492DC65627914A2100B41774 /* AppDelegate.swift */,
 				49983A1F2826B50F00721A84 /* Bindable.swift */,
@@ -329,6 +330,13 @@
 				492FD00F27B94E66007C99C8 /* UITextField+extension.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		498D95C0283E28B0004DFDE2 /* new */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = new;
 			sourceTree = "<group>";
 		};
 		49983A212826B5BD00721A84 /* MainController */ = {
