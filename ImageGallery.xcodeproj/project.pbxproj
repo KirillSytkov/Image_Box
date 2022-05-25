@@ -149,17 +149,16 @@
 		492DC65527914A2100B41774 /* ImageGallery */ = {
 			isa = PBXGroup;
 			children = (
-				498D95C0283E28B0004DFDE2 /* new */,
 				492DC66427914A2100B41774 /* Info.plist */,
 				492DC65627914A2100B41774 /* AppDelegate.swift */,
 				49983A1F2826B50F00721A84 /* Bindable.swift */,
 				498D95BE283E2823004DFDE2 /* Controller */,
+				49F3F23C279451E50062CA50 /* View */,
 				49E348B227F3711700572987 /* Model */,
+				49318CA627968CFE006EDECB /* ImagesObject */,
 				49F3F2382794517C0062CA50 /* Properties */,
 				498D95BF283E2872004DFDE2 /* Extensions */,
-				49318CA627968CFE006EDECB /* ImagesObject */,
 				49F1EB3E27981D89000F76FC /* UserDefaults */,
-				49F3F23C279451E50062CA50 /* View */,
 				49F3F23A279451B70062CA50 /* Resourses */,
 			);
 			path = ImageGallery;
@@ -330,13 +329,6 @@
 				492FD00F27B94E66007C99C8 /* UITextField+extension.swift */,
 			);
 			name = Extensions;
-			sourceTree = "<group>";
-		};
-		498D95C0283E28B0004DFDE2 /* new */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = new;
 			sourceTree = "<group>";
 		};
 		49983A212826B5BD00721A84 /* MainController */ = {
