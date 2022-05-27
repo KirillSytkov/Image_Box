@@ -1,9 +1,3 @@
-//
-//  MainTabBarViewController.swift
-//  ImageGallery
-//
-//  Created by Kirill Sytkov on 24.01.2022.
-//
 
 import UIKit
 

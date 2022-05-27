@@ -1,9 +1,3 @@
-//
-//  NewPasswordViewController.swift
-//  ImageGallery
-//
-//  Created by Kirill Sytkov on 30.01.2022.
-//
 
 import UIKit
 

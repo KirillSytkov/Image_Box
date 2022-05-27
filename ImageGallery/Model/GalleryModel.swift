@@ -1,12 +1,5 @@
-//
-//  galleryModel.swift
-//  ImageGallery
-//
-//  Created by Kirill Sytkov on 29.03.2022.
-//
 
 import Foundation
-import UIKit
 
 class GalleryModel {
     

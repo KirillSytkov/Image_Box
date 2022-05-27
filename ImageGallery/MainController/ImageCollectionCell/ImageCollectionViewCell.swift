@@ -1,9 +1,3 @@
-//
-//  ImageCollectionViewCell.swift
-//  ImageGallery
-//
-//  Created by Kirill Sytkov on 09.02.2022.
-//
 
 import UIKit
 

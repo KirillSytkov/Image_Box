@@ -1,9 +1,3 @@
-//
-//  FirstStartViewController.swift
-//  ImageGallery
-//
-//  Created by Kirill Sytkov on 16.01.2022.
-//
 
 import UIKit
 

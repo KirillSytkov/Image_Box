@@ -1,10 +1,3 @@
-//
-//  SliderViewController.swift
-//  ImageGallery
-//
-//  Created by Kirill Sytkov on 17.01.2022.
-//
-
 
 import UIKit
 

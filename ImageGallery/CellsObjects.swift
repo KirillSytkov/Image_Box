@@ -1,9 +1,3 @@
-//
-//  CellsObjects.swift
-//  ImageGallery
-//
-//  Created by Kirill Sytkov on 06.02.2022.
-//
 
 import Foundation
 import UIKit

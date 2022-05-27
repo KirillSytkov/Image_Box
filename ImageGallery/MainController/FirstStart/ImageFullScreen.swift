@@ -1,9 +1,3 @@
-//
-//  ImageFullScreen.swift
-//  ImageGallery
-//
-//  Created by Kirill Sytkov on 21.01.2022.
-//
 
 import UIKit
 

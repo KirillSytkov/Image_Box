@@ -1,9 +1,3 @@
-//
-//  NavigationBar.swift
-//  ImageGallery
-//
-//  Created by Kirill Sytkov on 22.01.2022.
-//
 
 import Foundation
 import UIKit

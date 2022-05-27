@@ -1,9 +1,3 @@
-//
-//  UIButtons+extension.swift
-//  ImageGallery
-//
-//  Created by Kirill Sytkov on 12.02.2022.
-//
 
 import Foundation
 import UIKit

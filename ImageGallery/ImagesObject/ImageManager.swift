@@ -1,9 +1,3 @@
-//
-//  Manager.swift
-//  ImageGallery
-//
-//  Created by Kirill Sytkov on 19.01.2022.
-//
 
 import Foundation
 import UIKit

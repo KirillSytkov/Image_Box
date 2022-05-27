@@ -1,9 +1,3 @@
-//
-//  ImageZoomView.swift
-//  ImageGallery
-//
-//  Created by Kirill Sytkov on 18.01.2022.
-//
 
 import Foundation
 import UIKit

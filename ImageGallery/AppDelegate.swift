@@ -1,9 +1,3 @@
-//
-//  AppDelegate.swift
-//  ImageGallery
-//
-//  Created by Kirill Sytkov on 14.01.2022.
-//
 
 import UIKit
 

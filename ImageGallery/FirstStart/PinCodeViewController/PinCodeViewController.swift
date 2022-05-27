@@ -1,9 +1,3 @@
-//
-//  PinCodeViewController.swift
-//  ImageGallery
-//
-//  Created by Kirill Sytkov on 15.01.2022.
-//
 
 import UIKit
 

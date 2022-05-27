@@ -1,9 +1,3 @@
-//
-//  UItextField+extension.swift
-//  ImageGallery
-//
-//  Created by Kirill Sytkov on 13.02.2022.
-//
 
 import Foundation
 import UIKit
